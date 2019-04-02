@@ -78,6 +78,6 @@ theme: landscape
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
   repo: https://github.com/shiningstarpxx/shiningstarpxx.github.com.git
   branch: source
