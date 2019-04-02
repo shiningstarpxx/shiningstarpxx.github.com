@@ -72,12 +72,12 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
-#theme: dawn
+#theme: landscape
+theme: dawn
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
   repo: https://github.com/shiningstarpxx/shiningstarpxx.github.com.git
-  branch: source
+  branch: master
