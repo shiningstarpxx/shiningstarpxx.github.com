@@ -84,21 +84,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>####Installing Elasticsearch</p>
-<p>Now that we’ve made sure our system and environment have the required pieces in place, we can begin with installing the stack’s components, starting with Elasticsearch:</p>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>elk已经成为了业界的标准日志分析系统，这里在mac os上做了一些测试验证, 这里方便以后查询，把操作过程做了记录.</p>
+<h3 id="Installing-Elasticsearch"><a href="#Installing-Elasticsearch" class="headerlink" title="Installing Elasticsearch"></a>Installing Elasticsearch</h3><p>Now that we’ve made sure our system and environment have the required pieces in place, we can begin with installing the stack’s components, starting with Elasticsearch:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew install elasticsearch &amp;&amp; brew info elasticsearch</span><br><span class="line">brew services start elasticsearch</span><br></pre></td></tr></table></figure>
 <p>Use your favorite browser to check that it is running correctly on localhost and the default port: <em><a href="http://localhost:9200" target="_blank" rel="noopener">http://localhost:9200</a></em></p>
 <p>The output should look something like this:</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span> : <span class="string">"FH0SVRp"</span>,</span><br><span class="line">  <span class="attr">"cluster_name"</span> : <span class="string">"elasticsearch_peixingxin"</span>,</span><br><span class="line">  <span class="attr">"cluster_uuid"</span> : <span class="string">"7uVXslqeQ_al6pZA2p0AGQ"</span>,</span><br><span class="line">  <span class="attr">"version"</span> : &#123;</span><br><span class="line">    <span class="attr">"number"</span> : <span class="string">"6.7.0"</span>,</span><br><span class="line">    <span class="attr">"build_flavor"</span> : <span class="string">"oss"</span>,</span><br><span class="line">    <span class="attr">"build_type"</span> : <span class="string">"tar"</span>,</span><br><span class="line">    <span class="attr">"build_hash"</span> : <span class="string">"8453f77"</span>,</span><br><span class="line">    <span class="attr">"build_date"</span> : <span class="string">"2019-03-21T15:32:29.844721Z"</span>,</span><br><span class="line">    <span class="attr">"build_snapshot"</span> : <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"lucene_version"</span> : <span class="string">"7.7.0"</span>,</span><br><span class="line">    <span class="attr">"minimum_wire_compatibility_version"</span> : <span class="string">"5.6.0"</span>,</span><br><span class="line">    <span class="attr">"minimum_index_compatibility_version"</span> : <span class="string">"5.0.0"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"tagline"</span> : <span class="string">"You Know, for Search"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>####Installing Logstash</p>
-<p>Your next step is to install Logstash:</p>
+<h3 id="Installing-Logstash"><a href="#Installing-Logstash" class="headerlink" title="Installing Logstash"></a>Installing Logstash</h3><p>Your next step is to install Logstash:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew install logstash</span><br><span class="line">brew services start logstash</span><br></pre></td></tr></table></figure>
-<h4 id="Installing-Kibana"><a href="#Installing-Kibana" class="headerlink" title="Installing Kibana"></a>Installing Kibana</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">brew install kibana</span><br><span class="line">brew services start kibana</span><br><span class="line">brew services list</span><br></pre></td></tr></table></figure>
+<h3 id="Installing-Kibana"><a href="#Installing-Kibana" class="headerlink" title="Installing Kibana"></a>Installing Kibana</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">brew install kibana</span><br><span class="line">brew services start kibana</span><br><span class="line">brew services list</span><br></pre></td></tr></table></figure>
 <p>Open the Kibana configuration file:  <em>kibana.yml</em></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /usr/<span class="built_in">local</span>/etc/kibana/kibana.yml</span><br></pre></td></tr></table></figure>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">server.port:</span> <span class="number">5601</span></span><br><span class="line"><span class="string">elasticsearch.url:</span> <span class="string">"http://localhost:9200”</span></span><br></pre></td></tr></table></figure>
 <p>If everything went well, open Kibana at <a href="http://localhost:5601/status" target="_blank" rel="noopener">http://localhost:5601/status</a>. You should see something like this:</p>
-<h4 id="Shipping-some-data"><a href="#Shipping-some-data" class="headerlink" title="Shipping some data"></a>Shipping some data</h4><p>You are ready to start sending data into Elasticsearch and enjoy all the goodness that the stack offers. To help you get started, here is an example of a Logstash pipeline sending syslog logs into the stack.</p>
+<h3 id="Shipping-some-data"><a href="#Shipping-some-data" class="headerlink" title="Shipping some data"></a>Shipping some data</h3><p>You are ready to start sending data into Elasticsearch and enjoy all the goodness that the stack offers. To help you get started, here is an example of a Logstash pipeline sending syslog logs into the stack.</p>
 <p>First, you will need to create a new Logstash configuration file: 同时要在配置文件中增加该路径</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim //user/<span class="built_in">local</span>/etc/logstash/syslog.conf</span><br></pre></td></tr></table></figure>
 <p>Enter the following configuration:</p>
@@ -110,7 +109,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://shiningstarpxx.github.com/2019/04/02/部署elk/" data-id="cjtzus9u80001pgs55j7mgctp" class="article-share-link">Share</a>
+      <a data-url="http://shiningstarpxx.github.com/2019/04/02/部署elk/" data-id="cjtzutqqg0001ues56ag6w96u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/StreamingSystem/">StreamingSystem</a></li></ul>
@@ -157,7 +156,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://shiningstarpxx.github.com/2017/10/28/hello-world/" data-id="cjtzus9sx0000pgs5pbrwvmu6" class="article-share-link">Share</a>
+      <a data-url="http://shiningstarpxx.github.com/2017/10/28/hello-world/" data-id="cjtzutqqb0000ues5eiffixu0" class="article-share-link">Share</a>
       
       
     </footer>
