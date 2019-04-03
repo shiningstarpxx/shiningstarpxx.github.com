@@ -96,17 +96,19 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="404">
-<meta property="og:url" content="http://shiningstarpxx.github.com/404/index.html">
+  <meta name="description" content="背景学习大数据，离不开kafka，mac os上就得装一个。安装步骤如下 12$ brew cask install java$ brew install kafka 启动zookeeper1$ zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties 启动kafka server1$ kafka-server-start /">
+<meta name="keywords" content="StreamingSystem, MQ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Apache Kafka Installation on Mac using Homebrew">
+<meta property="og:url" content="http://shiningstarpxx.github.com/2019/04/03/Apache-Kafka-Installation-on-Mac-using-Homebrew/index.html">
 <meta property="og:site_name" content="XStarX World">
+<meta property="og:description" content="背景学习大数据，离不开kafka，mac os上就得装一个。安装步骤如下 12$ brew cask install java$ brew install kafka 启动zookeeper1$ zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties 启动kafka server1$ kafka-server-start /">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-03T02:43:33.185Z">
+<meta property="og:updated_time" content="2019-04-03T14:30:09.399Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="404">
+<meta name="twitter:title" content="Apache Kafka Installation on Mac using Homebrew">
+<meta name="twitter:description" content="背景学习大数据，离不开kafka，mac os上就得装一个。安装步骤如下 12$ brew cask install java$ brew install kafka 启动zookeeper1$ zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties 启动kafka server1$ kafka-server-start /">
 
-
-  
 
 
   <link rel="alternate" href="/atom.xml" title="XStarX World" type="application/atom+xml">
@@ -115,7 +117,7 @@
 
   
   
-  <link rel="canonical" href="http://shiningstarpxx.github.com/404/">
+  <link rel="canonical" href="http://shiningstarpxx.github.com/2019/04/03/Apache-Kafka-Installation-on-Mac-using-Homebrew/">
 
 
 
@@ -125,7 +127,7 @@
   };
 </script>
 
-  <title>404 | XStarX World</title>
+  <title>Apache Kafka Installation on Mac using Homebrew | XStarX World</title>
   
 
 
@@ -296,7 +298,7 @@
         
         
           
-          <li class="menu-item menu-item-commonweal menu-item-active">
+          <li class="menu-item menu-item-commonweal">
 
     
     
@@ -317,31 +319,6 @@
 
   
     
-
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 
   
 
@@ -369,45 +346,203 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://shiningstarpxx.github.com/2019/04/03/Apache-Kafka-Installation-on-Mac-using-Homebrew/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pei, Xingxin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XStarX World">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">404
-
-</h1>
-
-<div class="post-meta">
-  
-  
-
-
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
+          <h1 class="post-title" itemprop="name headline">Apache Kafka Installation on Mac using Homebrew
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-03 22:08:08 / Modified: 22:30:09" itemprop="dateCreated datePublished" datetime="2019-04-03T22:08:08+08:00">2019-04-03</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
           
-        
-      </div>
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>学习大数据，离不开kafka，mac os上就得装一个。安装步骤如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ brew cask install java</span><br><span class="line">$ brew install kafka</span><br></pre></td></tr></table></figure>
+<h4 id="启动zookeeper"><a href="#启动zookeeper" class="headerlink" title="启动zookeeper"></a>启动zookeeper</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ zookeeper-server-start /usr/<span class="built_in">local</span>/etc/kafka/zookeeper.properties</span><br></pre></td></tr></table></figure>
+<h4 id="启动kafka-server"><a href="#启动kafka-server" class="headerlink" title="启动kafka server"></a>启动kafka server</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ kafka-server-start /usr/<span class="built_in">local</span>/etc/kafka/server.properties</span><br></pre></td></tr></table></figure>
+<h4 id="开始验证"><a href="#开始验证" class="headerlink" title="开始验证"></a>开始验证</h4><h5 id="创建kafka-topic"><a href="#创建kafka-topic" class="headerlink" title="创建kafka topic"></a>创建kafka topic</h5><p><em>A topic is a category or feed name to which records are published. Topics in Kafka are always multi-subscriber; that is, a topic can have zero, one, or many consumers that subscribe to the data written to it.</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<h5 id="Initialize-Producer-console"><a href="#Initialize-Producer-console" class="headerlink" title="Initialize Producer console"></a>Initialize Producer console</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kafka-console-producer --broker-list localhost:9092 --topic <span class="built_in">test</span></span><br><span class="line">&gt;send first message</span><br><span class="line">&gt;send second message</span><br><span class="line">&gt;wow it is working</span><br></pre></td></tr></table></figure>
+<h5 id="Initialize-Consumer-console"><a href="#Initialize-Consumer-console" class="headerlink" title="Initialize Consumer console"></a>Initialize Consumer console</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kafka-console-consumer --bootstrap-server localhost:9092 --topic <span class="built_in">test</span> --from-beginning</span><br><span class="line">send first message</span><br><span class="line">send second message</span><br><span class="line">wow it is working</span><br></pre></td></tr></table></figure>
+
       
     </div>
-    
-
-
 
     
+
     
     
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    Donate
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="Pei, Xingxin WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="Pei, Xingxin Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/StreamingSystem-MQ/" rel="tag"># StreamingSystem, MQ</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/02/部署elk/" rel="next" title="部署elk">
+                <i class="fa fa-chevron-left"></i> 部署elk
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
   </div>
 
 
@@ -436,8 +571,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -565,6 +709,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动zookeeper"><span class="nav-number">1.0.1.</span> <span class="nav-text">启动zookeeper</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动kafka-server"><span class="nav-number">1.0.2.</span> <span class="nav-text">启动kafka server</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开始验证"><span class="nav-number">1.0.3.</span> <span class="nav-text">开始验证</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建kafka-topic"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">创建kafka topic</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Initialize-Producer-console"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">Initialize Producer console</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Initialize-Consumer-console"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">Initialize Consumer console</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
