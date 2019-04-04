@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://shiningstarpxx.github.com/"/>
-  <updated>2019-04-03T14:30:09.399Z</updated>
+  <updated>2019-04-04T11:35:59.373Z</updated>
   <id>http://shiningstarpxx.github.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>linux使用zsh</title>
+    <link href="http://shiningstarpxx.github.com/2019/04/04/linux%E4%BD%BF%E7%94%A8zsh/"/>
+    <id>http://shiningstarpxx.github.com/2019/04/04/linux使用zsh/</id>
+    <published>2019-04-04T11:29:53.000Z</published>
+    <updated>2019-04-04T11:35:59.373Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>shell目前主流是/bin/bash, 但是配色真丑。业界里提供了很多更好的bash，比如叫zsh。 在mac上和linux上我都安装了zsh</p><h5 id="1-安装zsh包"><a href="#1-安装zsh包" class="headerlink" title="1.安装zsh包"></a>1.安装zsh包</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install zsh</span><br></pre></td></tr></table></figure><h5 id="2-切换默认shell为zsh"><a href="#2-切换默认shell为zsh" class="headerlink" title="2.切换默认shell为zsh"></a>2.切换默认shell为zsh</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure><h5 id="3-重启服务器让修改的配置生效"><a href="#3-重启服务器让修改的配置生效" class="headerlink" title="3.重启服务器让修改的配置生效"></a>3.重启服务器让修改的配置生效</h5><p>这个没什么好多说的，我习惯在web端控制台直接重启。</p><h5 id="4-安装on-my-zsh"><a href="#4-安装on-my-zsh" class="headerlink" title="4.安装on my zsh"></a>4.安装on my zsh</h5><p>curl<br><code>sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;</code><br>wget<br><code>sh -c &quot;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&quot;</code></p><p>实际上到这一步oh my zsh就已经安装完成了。</p><h5 id="5-最后调整theme"><a href="#5-最后调整theme" class="headerlink" title="5. 最后调整theme"></a>5. 最后调整theme</h5><p>使用ys主题 </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;shell目前主流是/bin/bash, 但是配色真丑。业界里提供了很多更好的bash，比如叫zsh。 在mac上和linux上我都安装了z
+      
+    
+    </summary>
+    
+    
+      <category term="linux, bash" scheme="http://shiningstarpxx.github.com/tags/linux-bash/"/>
+    
+  </entry>
   
   <entry>
     <title>Apache Kafka Installation on Mac using Homebrew</title>
