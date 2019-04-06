@@ -99,7 +99,7 @@
   <meta name="description" content="背景消息队列技术是分布式应用间交换信息的一种技术。消息队列可驻留在内存或磁盘上, 队列存储消息直到它们被应用程序读走。通过消息队列，应用程序可独立地执行–它们不需要知道彼此的位置、或在继续执行前不需要等待接收程序接收此消息。在分布式计算环境中，为了集成分布式应用，开发者需要对异构网络环境下的分布式应用提供有效的通信手段。为了管理需要共享的信息，对应用提供公共的信息交换机制是重要的。常用的消息队列技">
 <meta name="keywords" content="StreamingSystem, MQ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="kafka 介绍">
+<meta property="og:title" content="kafka 介绍 — 1">
 <meta property="og:url" content="http://shiningstarpxx.github.com/2019/04/05/kafka-介绍/index.html">
 <meta property="og:site_name" content="XStarX World">
 <meta property="og:description" content="背景消息队列技术是分布式应用间交换信息的一种技术。消息队列可驻留在内存或磁盘上, 队列存储消息直到它们被应用程序读走。通过消息队列，应用程序可独立地执行–它们不需要知道彼此的位置、或在继续执行前不需要等待接收程序接收此消息。在分布式计算环境中，为了集成分布式应用，开发者需要对异构网络环境下的分布式应用提供有效的通信手段。为了管理需要共享的信息，对应用提供公共的信息交换机制是重要的。常用的消息队列技">
@@ -107,9 +107,10 @@
 <meta property="og:image" content="http://kafka.apache.org/22/images/kafka-apis.png">
 <meta property="og:image" content="http://kafka.apache.org/22/images/log_anatomy.png">
 <meta property="og:image" content="http://kafka.apache.org/22/images/log_consumer.png">
-<meta property="og:updated_time" content="2019-04-06T03:25:19.233Z">
+<meta property="og:image" content="http://kafka.apache.org/22/images/consumer-groups.png">
+<meta property="og:updated_time" content="2019-04-06T07:04:29.753Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kafka 介绍">
+<meta name="twitter:title" content="kafka 介绍 — 1">
 <meta name="twitter:description" content="背景消息队列技术是分布式应用间交换信息的一种技术。消息队列可驻留在内存或磁盘上, 队列存储消息直到它们被应用程序读走。通过消息队列，应用程序可独立地执行–它们不需要知道彼此的位置、或在继续执行前不需要等待接收程序接收此消息。在分布式计算环境中，为了集成分布式应用，开发者需要对异构网络环境下的分布式应用提供有效的通信手段。为了管理需要共享的信息，对应用提供公共的信息交换机制是重要的。常用的消息队列技">
 <meta name="twitter:image" content="http://kafka.apache.org/22/images/kafka-apis.png">
 
@@ -131,7 +132,7 @@
   };
 </script>
 
-  <title>kafka 介绍 | XStarX World</title>
+  <title>kafka 介绍 — 1 | XStarX World</title>
   
 
 
@@ -381,7 +382,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">kafka 介绍
+          <h1 class="post-title" itemprop="name headline">kafka 介绍 — 1
 
               
             
@@ -424,7 +425,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-06 11:25:19" itemprop="dateModified" datetime="2019-04-06T11:25:19+08:00">2019-04-06</time>
+                <time title="Modified: 2019-04-06 15:04:29" itemprop="dateModified" datetime="2019-04-06T15:04:29+08:00">2019-04-06</time>
               
             
           </span>
@@ -495,6 +496,22 @@
 <p>In fact, the only metadata retained on a per-consumer basis is the offset or position of that consumer in the log. This offset is controlled by the consumer: normally a consumer will advance its offset linearly as it reads records, but, in fact, since the position is controlled by the consumer it can consume records in any order it likes. For example a consumer can reset to an older offset to reprocess data from the past or skip ahead to the most recent record and start consuming from “now”. 跟comsumer相关的只有metadata，并且可以由consumer随意修改控制</p>
 <p>This combination of features means that Kafka consumers are very cheap—they can come and go without much impact on the cluster or on other consumers. For example, you can use our command line tools to “tail” the contents of any topic without changing what is consumed by any existing consumers. 这种相结合的设计（kafka维护metadata，consumer负责控制），可以说兼顾了灵活和高效。另外的一种设计方式，是meta data由consumer来存储和控制–RabbitMQ？</p>
 <p>The partitions in the log serve several purposes. First, they allow the log to scale beyond a size that will fit on a single server. Each individual partition must fit on the servers that host it, but a topic may have many partitions so it can handle an arbitrary amount of data. Second they act as the unit of parallelism—more on that in a bit. partiion分区是为了增加topic的容量和吞吐量</p>
+<h3 id="Distribution分布式"><a href="#Distribution分布式" class="headerlink" title="Distribution分布式"></a>Distribution分布式</h3><p>The partitions of the log are distributed over the servers in the Kafka cluster with each server handling data and requests for a share of the partitions. Each partition is replicated across a configurable number of servers for fault tolerance. log的分片是分布式的，replicated数量也是根据配置来设置</p>
+<p>Each partition has one server which acts as the “leader” and zero or more servers which act as “followers”. The leader handles all read and write requests for the partition while the followers passively replicate the leader. If the leader fails, one of the followers will automatically become the new leader. Each server acts as a leader for some of its partitions and a follower for others so load is well balanced within the cluster. 每个分片一定会有一个leader，0个或者多个followers。leader负责读写，followers是负责replicate。如果leader挂了，一个follower会自动成为新的leader。每个服务可以做几个分片的leader，也可以做其他几个分片的follower，来实现load balance。(这也是因为replicate决定了一个server会有多个partition，作为容灾)</p>
+<h3 id="Geo-Replication"><a href="#Geo-Replication" class="headerlink" title="Geo-Replication"></a>Geo-Replication</h3><p>Kafka MirrorMaker provides geo-replication support for your clusters. With MirrorMaker, messages are replicated across multiple datacenters or cloud regions. You can use this in active/passive scenarios for backup and recovery; or in active/active scenarios to place data closer to your users, or support data locality requirements.</p>
+<h3 id="Producers-生产者"><a href="#Producers-生产者" class="headerlink" title="Producers 生产者"></a>Producers 生产者</h3><p>Producers publish data to the topics of their choice. The producer is responsible for choosing which record to assign to which partition within the topic. This can be done in a round-robin fashion simply to balance load or it can be done according to some semantic partition function (say based on some key in the record). More on the use of partitioning in a second! 生产者要保证均匀-平衡的写入同一个topic的分片中</p>
+<h3 id="Consumers-消费者"><a href="#Consumers-消费者" class="headerlink" title="Consumers 消费者"></a>Consumers 消费者</h3><p>Consumers label themselves with a <em>consumer group</em> name, and each record published to a topic is delivered to one consumer instance within each subscribing consumer group. Consumer instances can be in separate processes or on separate machines. 消费者有消费组的概念，在一个消费组内，一个记录只能被一个消费者消费。消费者实例可以是不同的进程，也可以在不同的机器上</p>
+<p>If all the consumer instances have the same consumer group, then the records will effectively be load balanced over the consumer instances. 同一个组内的消费者会balanced的消费records</p>
+<p>If all the consumer instances have different consumer groups, then each record will be broadcast to all the consumer processes. 每个record会广播给不同消费者组</p>
+<p><img src="http://kafka.apache.org/22/images/consumer-groups.png" alt></p>
+<p>A two server Kafka cluster hosting four partitions (P0-P3) with two consumer groups. Consumer group A has two consumer instances and group B has four. 如上图所示，4个分片，两个消费组</p>
+<p>More commonly, however, we have found that topics have a small number of consumer groups, one for each “logical subscriber”. Each group is composed of many consumer instances for scalability and fault tolerance. This is nothing more than publish-subscribe semantics where the subscriber is a cluster of consumers instead of a single process. 通常我们观察到，每个话题通常是有少数几个消费组，每个表示一个逻辑上的订阅。每个组由几个消费实例用于scalability和容错。这个语义也是包含发布-订阅</p>
+<p>The way consumption is implemented in Kafka is by dividing up the partitions in the log over the consumer instances so that each instance is the exclusive consumer of a “fair share” of partitions at any point in time. This process of maintaining membership in the group is handled by the Kafka protocol dynamically. If new instances join the group they will take over some partitions from other members of the group; if an instance dies, its partitions will be distributed to the remaining instances. kafka的实现是基于log分配给消费实例，这样每个实例可以在任意时间点”公平”的消费。消费实例的平衡由kafka内部实现。如果新的加入，会从其他人身上分担一些，如果一个挂掉，会分给其他人。—看起来很像是一致性哈希保证的。</p>
+<p>Kafka only provides a total order over records <em>within</em> a partition, not between different partitions in a topic. Per-partition ordering combined with the ability to partition data by key is sufficient for most applications. However, if you require a total order over records this can be achieved with a topic that has only one partition, though this will mean only one consumer process per consumer group. kafka只能保证同一个topic的同一个partition内有序。如果需要topic强有序，只能有一个分片，这样会导致只能有一个消费实例在一个消费组里。</p>
+<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h4><ul>
+<li>参考 <a href="http://kafka.apache.org/" target="_blank" rel="noopener">Apache Kafka 首页，了解最全面的 Apache Kafka 知识。</a></li>
+<li><a href="https://www.ibm.com/developerworks/cn/opensource/os-cn-kafka/index.html" target="_blank" rel="noopener">Apache kafka 工作原理介绍</a></li>
+</ul>
 
       
     </div>
@@ -767,7 +784,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从不同的角度来看kafka-MQ"><span class="nav-number">2.</span> <span class="nav-text">从不同的角度来看kafka(MQ)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kafka基本概念"><span class="nav-number">3.</span> <span class="nav-text">kafka基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Topics-and-Logs"><span class="nav-number">4.</span> <span class="nav-text">Topics and Logs</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从不同的角度来看kafka-MQ"><span class="nav-number">2.</span> <span class="nav-text">从不同的角度来看kafka(MQ)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kafka基本概念"><span class="nav-number">3.</span> <span class="nav-text">kafka基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Topics-and-Logs"><span class="nav-number">4.</span> <span class="nav-text">Topics and Logs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Distribution分布式"><span class="nav-number">5.</span> <span class="nav-text">Distribution分布式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Geo-Replication"><span class="nav-number">6.</span> <span class="nav-text">Geo-Replication</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Producers-生产者"><span class="nav-number">7.</span> <span class="nav-text">Producers 生产者</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Consumers-消费者"><span class="nav-number">8.</span> <span class="nav-text">Consumers 消费者</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Reference"><span class="nav-number">8.1.</span> <span class="nav-text">Reference</span></a></li></ol></li></ol></div>
             
 
           </div>
