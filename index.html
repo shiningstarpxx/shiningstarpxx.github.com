@@ -954,7 +954,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-06 17:09:12" itemprop="dateModified" datetime="2019-04-06T17:09:12+08:00">2019-04-06</time>
+                <time title="Modified: 2019-04-10 09:53:49" itemprop="dateModified" datetime="2019-04-10T09:53:49+08:00">2019-04-10</time>
               
             
           </span>
@@ -998,6 +998,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
 <h5 id="Initialize-Producer-console"><a href="#Initialize-Producer-console" class="headerlink" title="Initialize Producer console"></a>Initialize Producer console</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kafka-console-producer --broker-list localhost:9092 --topic <span class="built_in">test</span></span><br><span class="line">&gt;send first message</span><br><span class="line">&gt;send second message</span><br><span class="line">&gt;wow it is working</span><br></pre></td></tr></table></figure>
 <h5 id="Initialize-Consumer-console"><a href="#Initialize-Consumer-console" class="headerlink" title="Initialize Consumer console"></a>Initialize Consumer console</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kafka-console-consumer --bootstrap-server localhost:9092 --topic <span class="built_in">test</span> --from-beginning</span><br><span class="line">send first message</span><br><span class="line">send second message</span><br><span class="line">wow it is working</span><br></pre></td></tr></table></figure>
+<h5 id="列出所有的topic"><a href="#列出所有的topic" class="headerlink" title="列出所有的topic"></a>列出所有的topic</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ kafka-topics --list --zookeeper localhost:2181</span><br></pre></td></tr></table></figure>
 
           
         
