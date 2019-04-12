@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://shiningstarpxx.github.com/"/>
-  <updated>2019-04-12T02:58:59.132Z</updated>
+  <updated>2019-04-12T13:51:47.447Z</updated>
   <id>http://shiningstarpxx.github.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>kafka-介绍-4</title>
+    <link href="http://shiningstarpxx.github.com/2019/04/12/kafka-%E4%BB%8B%E7%BB%8D-4/"/>
+    <id>http://shiningstarpxx.github.com/2019/04/12/kafka-介绍-4/</id>
+    <published>2019-04-12T09:31:42.000Z</published>
+    <updated>2019-04-12T13:51:47.447Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="效率"><a href="#效率" class="headerlink" title="效率"></a><a href="http://kafka.apache.org/documentation/#maximizingefficiency" target="_blank" rel="noopener">效率</a></h5><p>We have put significant effort into efficiency. One of our primary use cases is handling web activity data, which is very high volume: each page view may generate dozens of writes. Furthermore, we assume each message published is read by at least one consumer (often many), hence we strive to make consumption as cheap as possible. 主要使用是网页的活动数据，每个页面会产生几十条数据。而且，我们假设每个消息至少被至少一个消费者读取，因此我们需要尽可能降低消费成本</p><p>We have also found, from experience building and running a number of similar systems, that efficiency is a key to effective multi-tenant operations. If the downstream infrastructure service can easily become a bottleneck due to a small bump in usage by the application, such small changes will often create problems. By being very fast we help ensure that the application will tip-over under load before the infrastructure. This is particularly important when trying to run a centralized service that supports dozens or hundreds of applications on a centralized cluster as changes in usage patterns are a near-daily occurrence. 我们同样发现，效率对多租户的至关重要。因为很容易堵塞。</p><p>We discussed disk efficiency in the previous section. Once poor disk access patterns have been eliminated, there are two common causes of inefficiency in this type of system: too many small I/O operations, and excessive byte copying. 两种方式会造成效率不足：太多小的io操作和巨量的数据拷贝</p><p>The small I/O problem happens both between the client and the server and in the server’s own persistent operations.小的ip问题通常在client和server，或者server内部自己的一致性操作。</p><p>To avoid this, our protocol is built around a “message set” abstraction that naturally groups messages together. This allows network requests to group messages together and amortize the overhead of the network roundtrip rather than sending a single message at a time. The server in turn appends chunks of messages to its log in one go, and the consumer fetches large linear chunks at a time. 为了避免这个，我们的协议围绕着”message set”抽象来建立。这容许请求把消息group，避免每次发出一个消息的开销。server部分，就append一串messages到log中，这样消费者一次取大串数据。</p><p>This simple optimization produces orders of magnitude speed up. Batching leads to larger network packets, larger sequential disk operations, contiguous memory blocks, and so on, all of which allows Kafka to turn a bursty stream of random message writes into linear writes that flow to the consumers. 这个简单优化产生了加速。批量到了大量的网络包，大量串行磁盘操作，持续的内存block等等，这些都允许kafka转为随机消息的小的流线性写入消费者</p><p>The other inefficiency is in byte copying. At low message rates this is not an issue, but under load the impact is significant. To avoid this we employ a standardized binary message format that is shared by the producer, the broker, and the consumer (so data chunks can be transferred without modification between them).另外一个byte copying的问题，低速率消息时不时问题，但是大了不行。我们采用了二进制消息格式，producer，borker，consumer公用。</p><p>The message log maintained by the broker is itself just a directory of files, each populated by a sequence of message sets that have been written to disk in the same format used by the producer and consumer. Maintaining this common format allows optimization of the most important operation: network transfer of persistent log chunks. Modern unix operating systems offer a highly optimized code path for transferring data out of pagecache to a socket; in Linux this is done with the <a href="http://man7.org/linux/man-pages/man2/sendfile.2.html" target="_blank" rel="noopener">sendfile system call</a>. 消息日志由broker维护，是一个文件目录, 类似于message sets. 这样，现代unix提供了优化的传输pagecahge到socker，参考文献如链接。</p><p>To understand the impact of sendfile, it is important to understand the common data path for transfer of data from file to socket:</p><ol><li>The operating system reads data from the disk into pagecache in kernel space. 操作系统从磁盘上读数据到内核里的pagecache</li><li>The application reads the data from kernel space into a user-space buffer。 应用从kenerl里的pagecache到用户的buffer</li><li>The application writes the data back into kernel space into a socket buffer。 应用把数据从buffer写回kernel的page cache，并进入socket buffer</li><li>The operating system copies the data from the socket buffer to the NIC buffer where it is sent over the network。操作系统拷贝socket buffer的数据到NIC buffer，然后发送网络。</li></ol><p>This is clearly inefficient, there are four copies and two system calls. Using sendfile, this re-copying is avoided by allowing the OS to send the data from pagecache to the network directly. So in this optimized path, only the final copy to the NIC buffer is needed. re-copying可以让OS拷贝pagecache数据直接到network</p><p>We expect a common use case to be multiple consumers on a topic. Using the zero-copy optimization above, data is copied into pagecache exactly once and reused on each consumption instead of being stored in memory and copied out to user-space every time it is read. This allows messages to be consumed at a rate that approaches the limit of the network connection. 我们期望是多个用户消费一个话题，这样数据进入pagecahce一次，但是可以用多次。这基本上就让消费速度和网速的限制差不多</p><p>This combination of pagecache and sendfile means that on a Kafka cluster where the consumers are mostly caught up you will see no read activity on the disks whatsoever as they will be serving data entirely from cache. pagecache和sendfiles 意味着kafka集群中，消费者不用从磁盘上获取数据。</p><p>For more background on the sendfile and zero-copy support in Java, see this <a href="http://www.ibm.com/developerworks/linux/library/j-zerocopy" target="_blank" rel="noopener">article</a>. zero-copy支持看文章。</p><h4 id="End-to-end-Batch-Compression"><a href="#End-to-end-Batch-Compression" class="headerlink" title="End-to-end Batch Compression"></a><a href="http://kafka.apache.org/documentation/#design_compression" target="_blank" rel="noopener">End-to-end Batch Compression</a></h4><p>In some cases the bottleneck is actually not CPU or disk but network bandwidth. This is particularly true for a data pipeline that needs to send messages between data centers over a wide-area network. Of course, the user can always compress its messages one at a time without any support needed from Kafka, but this can lead to very poor compression ratios as much of the redundancy is due to repetition between messages of the same type (e.g. field names in JSON or user agents in web logs or common string values). Efficient compression requires compressing multiple messages together rather than compressing each message individually. 在某些场景不是cpu或者磁盘，而是网络带宽。特别是在数据中心在一个广阔的网络上。所以需要有效的统一压缩</p><p>Kafka supports this with an efficient batching format. A batch of messages can be clumped together compressed and sent to the server in this form. This batch of messages will be written in compressed form and will remain compressed in the log and will only be decompressed by the consumer. kafka支持有效的批处理模式。批处理消息可以一起被压缩，传输，写入log。只会被消费者解压。</p><p>Kafka supports GZIP, Snappy, LZ4 and ZStandard compression protocols. More details on compression can be found <a href="https://cwiki.apache.org/confluence/display/KAFKA/Compression" target="_blank" rel="noopener">here</a>. kafka支持gzip，snappy等等</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;效率&quot;&gt;&lt;a href=&quot;#效率&quot; class=&quot;headerlink&quot; title=&quot;效率&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://kafka.apache.org/documentation/#maximizingefficiency&quot; target=&quot;_b
+      
+    
+    </summary>
+    
+    
+      <category term="StreamingSystem" scheme="http://shiningstarpxx.github.com/tags/StreamingSystem/"/>
+    
+      <category term="MQ" scheme="http://shiningstarpxx.github.com/tags/MQ/"/>
+    
+      <category term="Kafka" scheme="http://shiningstarpxx.github.com/tags/Kafka/"/>
+    
+  </entry>
   
   <entry>
     <title>kafka-介绍-3.md</title>
