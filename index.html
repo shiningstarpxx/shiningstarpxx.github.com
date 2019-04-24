@@ -356,6 +356,184 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://shiningstarpxx.github.com/2019/04/24/hexo增加评论/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pei, Xingxin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XStarX World">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/24/hexo增加评论/" class="post-title-link" itemprop="url">hexo增加评论</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-24 21:49:47 / Modified: 21:50:50" itemprop="dateCreated datePublished" datetime="2019-04-24T21:49:47+08:00">2019-04-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://yashuning.github.io/2018/06/29/hexo-Next-主题添加评论功能/" target="_blank" rel="noopener">本文系转载</a></p>
+<p>Hexo 的 Next 主题继承了多种评论系统，我在这里介绍两种个人觉得不错的评论系统：Valine 和 gitment</p>
+<h3 id="Valine-评论系统"><a href="#Valine-评论系统" class="headerlink" title="Valine 评论系统"></a>Valine 评论系统</h3><p>使用 Valine 评论系统，这款系统不需要登录便可以登录，没有后端，Next 主题最新已经支持安装</p>
+<ul>
+<li>基于 Leancloud 的系统</li>
+<li>支持 MarkDown 语法</li>
+<li>无后端实现，快速高效</li>
+</ul>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><h5 id="注册-LeanCloud"><a href="#注册-LeanCloud" class="headerlink" title="注册 LeanCloud"></a>注册 LeanCloud</h5><p>因为 Valine 是基于 LeanCloud 系统的，所以先在 LeanCloud 中注册账号</p>
+<p><a href="https://leancloud.cn/dashboard/login.html#/signin" target="_blank" rel="noopener">LeanCloud官网登录入口</a></p>
+<p>注册登陆后，访问控制台，创建应用，选择开发版，创建好之后就生成了 <code>App ID</code> 和 <code>App Key</code></p>
+<h5 id="设置-Next-主题"><a href="#设置-Next-主题" class="headerlink" title="设置 Next 主题"></a>设置 Next 主题</h5><p>在主题的配置文件中，修改关于 valine 的配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># Valine.</span><br><span class="line"># You can get your appid and appkey from https://leancloud.cn</span><br><span class="line"># more info please open https://valine.js.org</span><br><span class="line">valine:</span><br><span class="line">  enable: true # 是否开启</span><br><span class="line">  appid:   # 上一步获取的 App ID</span><br><span class="line">  appkey:  # 上一步获取的 App Key</span><br><span class="line">  notify: false # 新留言是否需要通知 https://github.com/xCss/Valine/wiki</span><br><span class="line">  verify: false # 是否需要验证，验证比较反人类建议false关闭</span><br><span class="line">  placeholder: 请在此输入您的留言 # 默认留言框内的文字</span><br><span class="line">  avatar: mm # 默认头像</span><br><span class="line">  guest_info: nick,mail # 默认留言框的头部需要访问者输入的信息</span><br><span class="line">  pageSize: 10 # pagination size #默认单页的留言条数</span><br></pre></td></tr></table></figure>
+<p>重新部署</p>
+<h4 id="评论管理"><a href="#评论管理" class="headerlink" title="评论管理"></a>评论管理</h4><p>如果想要管理评论，进入 leancloud 官网，找到 <code>控制台</code>-&gt;<code>存储</code>-&gt;<code>commet</code> 中进行管理</p>
+<h3 id="Gitment-评论系统"><a href="#Gitment-评论系统" class="headerlink" title="Gitment 评论系统"></a>Gitment 评论系统</h3><p>gitment，它是基于 github 开发的，是依靠于 <code>GitHub Issues</code> 的评论系统，Next 主题最新已经支持安装</p>
+<p>前提：更新 Next 主题（5.1.2 主题）</p>
+<h4 id="注册OAuth-application"><a href="#注册OAuth-application" class="headerlink" title="注册OAuth application"></a>注册OAuth application</h4><ol>
+<li><p>在 github 中进行注册，进入 <a href="https://github.com/settings/profile" target="_blank" rel="noopener">https://github.com/settings/profile</a></p>
+</li>
+<li><p>点击左侧 Developer settings</p>
+</li>
+<li><p>Register a new application</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Application name:	#应用名称</span><br><span class="line">Homepage URL：  		#网站URL(填自己的博客主页地址)</span><br><span class="line">Application description		#描述</span><br><span class="line">Authorization callback URL:	#网站URL(填自己的博客主页地址)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注册完成之后，会得到：<code>Client ID</code> 和 <code>Client Secret</code></p>
+</li>
+</ol>
+<h4 id="新建存放博客评论仓库"><a href="#新建存放博客评论仓库" class="headerlink" title="新建存放博客评论仓库"></a>新建存放博客评论仓库</h4><p>可以在 github 中建一个项目，专门用来存储你的博客评论</p>
+<h4 id="配置-next-主题文件"><a href="#配置-next-主题文件" class="headerlink" title="配置 next 主题文件"></a>配置 next 主题文件</h4><p>编辑主题配置文件：themes\next\ _config.yml，找到有关 gitment 的设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">gitment:   </span><br><span class="line">  enable:  true</span><br><span class="line">  mint: true  </span><br><span class="line">  count: true </span><br><span class="line">  lazy: false  						#评论懒加载，如果true，则默认不展示评论，点击按钮查看评论</span><br><span class="line">  cleanly: false  	</span><br><span class="line">  language: 		</span><br><span class="line">  github_user: 						#github名称</span><br><span class="line">  github_repo: BlogComments			#上一步新建存放评论的仓库名</span><br><span class="line">  client_id: b8bad0exxxx			#上面注册 OAuth Application 的 Client ID</span><br><span class="line">  client_secret: bcee560xxxxxx		#上面注册 OAuth Application 申请的 Client Secret</span><br><span class="line">  proxy_gateway: </span><br><span class="line">  redirect_protocol: # Protocol of redirect_uri with force_redirect_protocol when mint</span><br></pre></td></tr></table></figure>
+<h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><p>在设置完成之后，hexo 重新部署</p>
+<p>每篇文章都要点击初始化评论按钮</p>
+<h4 id="评论"><a href="#评论" class="headerlink" title="评论"></a>评论</h4><p>评论显示在新建存放评论的仓库中的 <code>issue</code> 中</p>
+<h3 id="关闭某个页面的评论"><a href="#关闭某个页面的评论" class="headerlink" title="关闭某个页面的评论"></a>关闭某个页面的评论</h3><p>在页面的 <code>Front-matter</code> 中添加 <code>comments</code> 字段，设为 <code>false</code></p>
+<p>比如标签页不想要评论，则在标签页面中做以下设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">title: 标签</span><br><span class="line">date: 2015-12-16 17:05:24</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://shiningstarpxx.github.com/2019/04/24/java项目使用bazel/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1962,7 +2140,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

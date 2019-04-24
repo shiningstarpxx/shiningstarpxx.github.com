@@ -96,18 +96,17 @@
 
 
 
-  <meta name="description" content="API 部分Kafka includes five core apis:  The Producer API allows applications to send streams of data to topics in the Kafka cluster. The Consumer API allows applications to read streams of data from top">
-<meta name="keywords" content="StreamingSystem,MQ">
+  <meta name="description" content="本文系转载 Hexo 的 Next 主题继承了多种评论系统，我在这里介绍两种个人觉得不错的评论系统：Valine 和 gitment Valine 评论系统使用 Valine 评论系统，这款系统不需要登录便可以登录，没有后端，Next 主题最新已经支持安装  基于 Leancloud 的系统 支持 MarkDown 语法 无后端实现，快速高效  配置注册 LeanCloud因为 Valine 是基">
 <meta property="og:type" content="article">
-<meta property="og:title" content="kafka-介绍-3.md">
-<meta property="og:url" content="http://shiningstarpxx.github.com/2019/04/10/kafka-介绍-3/index.html">
+<meta property="og:title" content="hexo增加评论">
+<meta property="og:url" content="http://shiningstarpxx.github.com/2019/04/24/hexo增加评论/index.html">
 <meta property="og:site_name" content="XStarX World">
-<meta property="og:description" content="API 部分Kafka includes five core apis:  The Producer API allows applications to send streams of data to topics in the Kafka cluster. The Consumer API allows applications to read streams of data from top">
+<meta property="og:description" content="本文系转载 Hexo 的 Next 主题继承了多种评论系统，我在这里介绍两种个人觉得不错的评论系统：Valine 和 gitment Valine 评论系统使用 Valine 评论系统，这款系统不需要登录便可以登录，没有后端，Next 主题最新已经支持安装  基于 Leancloud 的系统 支持 MarkDown 语法 无后端实现，快速高效  配置注册 LeanCloud因为 Valine 是基">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-12T02:58:59.132Z">
+<meta property="og:updated_time" content="2019-04-24T13:50:50.795Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kafka-介绍-3.md">
-<meta name="twitter:description" content="API 部分Kafka includes five core apis:  The Producer API allows applications to send streams of data to topics in the Kafka cluster. The Consumer API allows applications to read streams of data from top">
+<meta name="twitter:title" content="hexo增加评论">
+<meta name="twitter:description" content="本文系转载 Hexo 的 Next 主题继承了多种评论系统，我在这里介绍两种个人觉得不错的评论系统：Valine 和 gitment Valine 评论系统使用 Valine 评论系统，这款系统不需要登录便可以登录，没有后端，Next 主题最新已经支持安装  基于 Leancloud 的系统 支持 MarkDown 语法 无后端实现，快速高效  配置注册 LeanCloud因为 Valine 是基">
 
 
 
@@ -117,7 +116,7 @@
 
   
   
-  <link rel="canonical" href="http://shiningstarpxx.github.com/2019/04/10/kafka-介绍-3/">
+  <link rel="canonical" href="http://shiningstarpxx.github.com/2019/04/24/hexo增加评论/">
 
 
 
@@ -127,7 +126,7 @@
   };
 </script>
 
-  <title>kafka-介绍-3.md | XStarX World</title>
+  <title>hexo增加评论 | XStarX World</title>
   
 
 
@@ -360,7 +359,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://shiningstarpxx.github.com/2019/04/10/kafka-介绍-3/">
+    <link itemprop="mainEntityOfPage" href="http://shiningstarpxx.github.com/2019/04/24/hexo增加评论/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Pei, Xingxin">
@@ -377,7 +376,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">kafka-介绍-3.md
+          <h1 class="post-title" itemprop="name headline">hexo增加评论
 
               
             
@@ -403,24 +402,12 @@
                 
               
 
-              <time title="Created: 2019-04-10 20:28:41" itemprop="dateCreated datePublished" datetime="2019-04-10T20:28:41+08:00">2019-04-10</time>
+              <time title="Created: 2019-04-24 21:49:47 / Modified: 21:50:50" itemprop="dateCreated datePublished" datetime="2019-04-24T21:49:47+08:00">2019-04-24</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-04-12 10:58:59" itemprop="dateModified" datetime="2019-04-12T10:58:59+08:00">2019-04-12</time>
               
             
           </span>
@@ -438,8 +425,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/04/10/kafka-介绍-3/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/04/10/kafka-介绍-3/" itemprop="commentCount"></span>
+                <a href="/2019/04/24/hexo增加评论/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/04/24/hexo增加评论/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -467,37 +454,43 @@
       
 
       
-        <h5 id="API-部分"><a href="#API-部分" class="headerlink" title="API 部分"></a><a href="http://kafka.apache.org/documentation/#api" target="_blank" rel="noopener">API 部分</a></h5><p>Kafka includes five core apis:</p>
-<ol>
-<li>The <a href="http://kafka.apache.org/documentation/#producerapi" target="_blank" rel="noopener">Producer</a> API allows applications to send streams of data to topics in the Kafka cluster.</li>
-<li>The <a href="http://kafka.apache.org/documentation/#consumerapi" target="_blank" rel="noopener">Consumer</a> API allows applications to read streams of data from topics in the Kafka cluster.</li>
-<li>The <a href="http://kafka.apache.org/documentation/#streamsapi" target="_blank" rel="noopener">Streams</a> API allows transforming streams of data from input topics to output topics.</li>
-<li>The <a href="http://kafka.apache.org/documentation/#connectapi" target="_blank" rel="noopener">Connect</a> API allows implementing connectors that continually pull from some source system or application into Kafka or push from Kafka into some sink system or application.</li>
-<li>The <a href="http://kafka.apache.org/documentation/#adminapi" target="_blank" rel="noopener">AdminClient</a> API allows managing and inspecting topics, brokers, and other Kafka objects.</li>
+        <p><a href="https://yashuning.github.io/2018/06/29/hexo-Next-主题添加评论功能/" target="_blank" rel="noopener">本文系转载</a></p>
+<p>Hexo 的 Next 主题继承了多种评论系统，我在这里介绍两种个人觉得不错的评论系统：Valine 和 gitment</p>
+<h3 id="Valine-评论系统"><a href="#Valine-评论系统" class="headerlink" title="Valine 评论系统"></a>Valine 评论系统</h3><p>使用 Valine 评论系统，这款系统不需要登录便可以登录，没有后端，Next 主题最新已经支持安装</p>
+<ul>
+<li>基于 Leancloud 的系统</li>
+<li>支持 MarkDown 语法</li>
+<li>无后端实现，快速高效</li>
+</ul>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><h5 id="注册-LeanCloud"><a href="#注册-LeanCloud" class="headerlink" title="注册 LeanCloud"></a>注册 LeanCloud</h5><p>因为 Valine 是基于 LeanCloud 系统的，所以先在 LeanCloud 中注册账号</p>
+<p><a href="https://leancloud.cn/dashboard/login.html#/signin" target="_blank" rel="noopener">LeanCloud官网登录入口</a></p>
+<p>注册登陆后，访问控制台，创建应用，选择开发版，创建好之后就生成了 <code>App ID</code> 和 <code>App Key</code></p>
+<h5 id="设置-Next-主题"><a href="#设置-Next-主题" class="headerlink" title="设置 Next 主题"></a>设置 Next 主题</h5><p>在主题的配置文件中，修改关于 valine 的配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># Valine.</span><br><span class="line"># You can get your appid and appkey from https://leancloud.cn</span><br><span class="line"># more info please open https://valine.js.org</span><br><span class="line">valine:</span><br><span class="line">  enable: true # 是否开启</span><br><span class="line">  appid:   # 上一步获取的 App ID</span><br><span class="line">  appkey:  # 上一步获取的 App Key</span><br><span class="line">  notify: false # 新留言是否需要通知 https://github.com/xCss/Valine/wiki</span><br><span class="line">  verify: false # 是否需要验证，验证比较反人类建议false关闭</span><br><span class="line">  placeholder: 请在此输入您的留言 # 默认留言框内的文字</span><br><span class="line">  avatar: mm # 默认头像</span><br><span class="line">  guest_info: nick,mail # 默认留言框的头部需要访问者输入的信息</span><br><span class="line">  pageSize: 10 # pagination size #默认单页的留言条数</span><br></pre></td></tr></table></figure>
+<p>重新部署</p>
+<h4 id="评论管理"><a href="#评论管理" class="headerlink" title="评论管理"></a>评论管理</h4><p>如果想要管理评论，进入 leancloud 官网，找到 <code>控制台</code>-&gt;<code>存储</code>-&gt;<code>commet</code> 中进行管理</p>
+<h3 id="Gitment-评论系统"><a href="#Gitment-评论系统" class="headerlink" title="Gitment 评论系统"></a>Gitment 评论系统</h3><p>gitment，它是基于 github 开发的，是依靠于 <code>GitHub Issues</code> 的评论系统，Next 主题最新已经支持安装</p>
+<p>前提：更新 Next 主题（5.1.2 主题）</p>
+<h4 id="注册OAuth-application"><a href="#注册OAuth-application" class="headerlink" title="注册OAuth application"></a>注册OAuth application</h4><ol>
+<li><p>在 github 中进行注册，进入 <a href="https://github.com/settings/profile" target="_blank" rel="noopener">https://github.com/settings/profile</a></p>
+</li>
+<li><p>点击左侧 Developer settings</p>
+</li>
+<li><p>Register a new application</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Application name:	#应用名称</span><br><span class="line">Homepage URL：  		#网站URL(填自己的博客主页地址)</span><br><span class="line">Application description		#描述</span><br><span class="line">Authorization callback URL:	#网站URL(填自己的博客主页地址)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注册完成之后，会得到：<code>Client ID</code> 和 <code>Client Secret</code></p>
+</li>
 </ol>
-<p>Kafka exposes all its functionality over a language independent protocol which has clients available in many programming languages. However only the Java clients are maintained as part of the main Kafka project, the others are available as independent open source projects. A list of non-Java clients is available</p>
-<h5 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h5><h6 id="动机"><a href="#动机" class="headerlink" title="动机"></a><a href="http://kafka.apache.org/documentation/#majordesignelements" target="_blank" rel="noopener">动机</a></h6><p>We designed Kafka to be able to act as a unified platform for handling all the real-time data feeds <a href="http://kafka.apache.org/documentation/#introduction" target="_blank" rel="noopener">a large company might have</a>. To do this we had to think through a fairly broad set of use cases. 设计初衷就是为了满足所有的实时数据消费</p>
-<p>It would have to have high-throughput to support high volume event streams such as real-time log aggregation. 高吞吐， 比如real-time 日志聚合</p>
-<p>It would need to deal gracefully with large data backlogs to be able to support periodic data loads from offline systems. 需要优雅的解决离线系统周期性读取大量数据</p>
-<p>It also meant the system would have to handle low-latency delivery to handle more traditional messaging use-cases. 必须low-latency的发送消息</p>
-<p>We wanted to support partitioned, distributed, real-time processing of these feeds to create new, derived feeds. This motivated our partitioning and consumer model. 必须支持partitioned，分布式的，实时的处理消息。这个促使我们分区和消费者模型</p>
-<p>Finally in cases where the stream is fed into other data systems for serving, we knew the system would have to be able to guarantee fault-tolerance in the presence of machine failures. 必须做fault-tolerance来应对机器的failures。</p>
-<p>Supporting these uses led us to a design with a number of unique elements, more akin to a database log than a traditional messaging system. We will outline some elements of the design in the following sections.</p>
-<h6 id="持久化，persistence"><a href="#持久化，persistence" class="headerlink" title="持久化，persistence"></a><a href="http://kafka.apache.org/documentation/#persistence" target="_blank" rel="noopener">持久化，persistence</a></h6><h4 id="Don’t-fear-the-filesystem"><a href="#Don’t-fear-the-filesystem" class="headerlink" title="Don’t fear the filesystem!"></a><a href="http://kafka.apache.org/documentation/#design_filesystem" target="_blank" rel="noopener">Don’t fear the filesystem!</a></h4><p>Kafka relies heavily on the filesystem for storing and caching messages. There is a general perception that “disks are slow” which makes people skeptical that a persistent structure can offer competitive performance. In fact disks are both much slower and much faster than people expect depending on how they are used; and a properly designed disk structure can often be as fast as the network. 合适的disk结构可以跟网络一样快！！！</p>
-<p>The key fact about disk performance is that the throughput of hard drives has been diverging from the latency of a disk seek for the last decade. As a result the performance of linear writes on a <a href="http://en.wikipedia.org/wiki/Non-RAID_drive_architectures" target="_blank" rel="noopener">JBOD</a> configuration with six 7200rpm SATA RAID-5 array is about 600MB/sec but the performance of random writes is only about 100k/sec—a difference of over 6000X. These linear reads and writes are the most predictable of all usage patterns, and are heavily optimized by the operating system. A modern operating system provides read-ahead and write-behind techniques that prefetch data in large block multiples and group smaller logical writes into large physical writes. A further discussion of this issue can be found in this <a href="http://queue.acm.org/detail.cfm?id=1563874" target="_blank" rel="noopener">ACM Queue article</a>; they actually find that <a href="http://deliveryimages.acm.org/10.1145/1570000/1563874/jacobs3.jpg" target="_blank" rel="noopener">sequential disk access can in some cases be faster than random memory access!</a></p>
-<p>To compensate for this performance divergence, modern operating systems have become increasingly aggressive in their use of main memory for disk caching. A modern OS will happily divert <em>all</em> free memory to disk caching with little performance penalty when the memory is reclaimed. All disk reads and writes will go through this unified cache. This feature cannot easily be turned off without using direct I/O, so even if a process maintains an in-process cache of the data, this data will likely be duplicated in OS pagecache, effectively storing everything twice. 现代操作系统都是用内存来加速磁盘，所以极端情况，内存数据同时在OS的页缓存上也有，相当于每个东西被存储了两次</p>
-<p>Furthermore, we are building on top of the JVM, and anyone who has spent any time with Java memory usage knows two things: JVM的特性</p>
-<ol>
-<li>The memory overhead of objects is very high, often doubling the size of the data stored (or worse). 存储对象前的空间非常大，通常是已经存储数据大小的两倍</li>
-<li>Java garbage collection becomes increasingly fiddly and slow as the in-heap data increases. Java的垃圾回收在堆数据增加的情况下，会变得很慢和繁琐的</li>
-</ol>
-<p>As a result of these factors using the filesystem and relying on pagecache is superior to maintaining an in-memory cache or other structure—we at least double the available cache by having automatic access to all free memory, and likely double again by storing a compact byte structure rather than individual objects.  直接依赖pagecache使用文件系统比在内存中使用cache或者其他数据结构更优，至少我们可以直接获得两倍大小的内存，如果使用压缩结构可以再获得两倍的空间。Doing so will result in a cache of up to 28-30GB on a 32GB machine without GC penalties. 比如，在32G的内存下cache可以达到28-30G，并且没有GC。Furthermore, this cache will stay warm even if the service is restarted, whereas the in-process cache will need to be rebuilt in memory (which for a 10GB cache may take 10 minutes) or else it will need to start with a completely cold cache (which likely means terrible initial performance). 并且，这种cache可以直接使用即使服务重启，而且内存结构需要重新构建或者重新初始化。This also greatly simplifies the code as all logic for maintaining coherency between the cache and filesystem is now in the OS, which tends to do so more efficiently and more correctly than one-off in-process attempts. If your disk usage favors linear reads then read-ahead is effectively pre-populating this cache with useful data on each disk read. 这样同样可以大幅度简化代码维护cache和文件系统一致性的问题，os可以做的更有效率更准确。</p>
-<p>This suggests a design which is very simple: rather than maintain as much as possible in-memory and flush it all out to the filesystem in a panic when we run out of space, we invert that. All data is immediately written to a persistent log on the filesystem without necessarily flushing to disk. In effect this just means that it is transferred into the kernel’s pagecache. 这建议了一个简单的设计：与其维护一个内存结构然后再刷入磁盘， 不如所有数据写入持久化的文件系统，而不是必要时刷盘。事实上，这意味着我们把写入转化到了kernerl的pagecache.</p>
-<p>This style of pagecache-centric design is described in an <a href="http://varnish-cache.org/wiki/ArchitectNotes" target="_blank" rel="noopener">article</a> on the design of Varnish here (along with a healthy dose of arrogance). </p>
-<h4 id="Constant-Time-Suffices"><a href="#Constant-Time-Suffices" class="headerlink" title="Constant Time Suffices"></a><a href="http://kafka.apache.org/documentation/#design_constanttime" target="_blank" rel="noopener">Constant Time Suffices</a></h4><p>The persistent data structure used in messaging systems are often a per-consumer queue with an associated BTree or other general-purpose random access data structures to maintain metadata about messages. BTrees are the most versatile data structure available, and make it possible to support a wide variety of transactional and non-transactional semantics in the messaging system. They do come with a fairly high cost, though: Btree operations are O(log N). Normally O(log N) is considered essentially equivalent to constant time, but this is not true for disk operations. Disk seeks come at 10 ms a pop, and each disk can do only one seek at a time so parallelism is limited. Hence even a handful of disk seeks leads to very high overhead. Since storage systems mix very fast cached operations with very slow physical disk operations, the observed performance of tree structures is often superlinear as data increases with fixed cache–i.e. doubling your data makes things much worse than twice as slow. 传统的BTree的 O(log N)在磁盘下不适合。</p>
-<p>Intuitively a persistent queue could be built on simple reads and appends to files as is commonly the case with logging solutions. This structure has the advantage that all operations are O(1) and reads do not block writes or each other. This has obvious performance advantages since the performance is completely decoupled from the data size—one server can now take full advantage of a number of cheap, low-rotational speed 1+TB SATA drives. Though they have poor seek performance, these drives have acceptable performance for large reads and writes and come at 1/3 the price and 3x the capacity. logging的解决方案，大概是1/3的价格，3倍的容量。</p>
-<p>Having access to virtually unlimited disk space without any performance penalty means that we can provide some features not usually found in a messaging system. For example, in Kafka, instead of attempting to delete messages as soon as they are consumed, we can retain messages for a relatively long period (say a week). This leads to a great deal of flexibility for consumers, as we will describe. 这种方案可以提供传统消息系统无法提供的优势。</p>
-
+<h4 id="新建存放博客评论仓库"><a href="#新建存放博客评论仓库" class="headerlink" title="新建存放博客评论仓库"></a>新建存放博客评论仓库</h4><p>可以在 github 中建一个项目，专门用来存储你的博客评论</p>
+<h4 id="配置-next-主题文件"><a href="#配置-next-主题文件" class="headerlink" title="配置 next 主题文件"></a>配置 next 主题文件</h4><p>编辑主题配置文件：themes\next\ _config.yml，找到有关 gitment 的设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">gitment:   </span><br><span class="line">  enable:  true</span><br><span class="line">  mint: true  </span><br><span class="line">  count: true </span><br><span class="line">  lazy: false  						#评论懒加载，如果true，则默认不展示评论，点击按钮查看评论</span><br><span class="line">  cleanly: false  	</span><br><span class="line">  language: 		</span><br><span class="line">  github_user: 						#github名称</span><br><span class="line">  github_repo: BlogComments			#上一步新建存放评论的仓库名</span><br><span class="line">  client_id: b8bad0exxxx			#上面注册 OAuth Application 的 Client ID</span><br><span class="line">  client_secret: bcee560xxxxxx		#上面注册 OAuth Application 申请的 Client Secret</span><br><span class="line">  proxy_gateway: </span><br><span class="line">  redirect_protocol: # Protocol of redirect_uri with force_redirect_protocol when mint</span><br></pre></td></tr></table></figure>
+<h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><p>在设置完成之后，hexo 重新部署</p>
+<p>每篇文章都要点击初始化评论按钮</p>
+<h4 id="评论"><a href="#评论" class="headerlink" title="评论"></a>评论</h4><p>评论显示在新建存放评论的仓库中的 <code>issue</code> 中</p>
+<h3 id="关闭某个页面的评论"><a href="#关闭某个页面的评论" class="headerlink" title="关闭某个页面的评论"></a>关闭某个页面的评论</h3><p>在页面的 <code>Front-matter</code> 中添加 <code>comments</code> 字段，设为 <code>false</code></p>
+<p>比如标签页不想要评论，则在标签页面中做以下设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">title: 标签</span><br><span class="line">date: 2015-12-16 17:05:24</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -551,14 +544,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/StreamingSystem/" rel="tag"># StreamingSystem</a>
-          
-            <a href="/tags/MQ/" rel="tag"># MQ</a>
-          
-        </div>
-      
 
       
       
@@ -568,8 +553,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/06/kafka-介绍-2/" rel="next" title="kafka-介绍-2">
-                <i class="fa fa-chevron-left"></i> kafka-介绍-2
+              <a href="/2019/04/24/java项目使用bazel/" rel="next" title="java项目使用bazel">
+                <i class="fa fa-chevron-left"></i> java项目使用bazel
               </a>
             
           </div>
@@ -577,10 +562,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/12/kafka-介绍-4/" rel="prev" title="kafka-介绍-4">
-                kafka-介绍-4 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -792,7 +773,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#API-部分"><span class="nav-number">1.</span> <span class="nav-text">API 部分</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#设计"><span class="nav-number">2.</span> <span class="nav-text">设计</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#动机"><span class="nav-number">2.1.</span> <span class="nav-text">动机</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#持久化，persistence"><span class="nav-number">2.2.</span> <span class="nav-text">持久化，persistence</span></a></li></ol></li></ol><li class="nav-item nav-level-4"><a class="nav-link" href="#Don’t-fear-the-filesystem"><span class="nav-number"></span> <span class="nav-text">Don’t fear the filesystem!</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Constant-Time-Suffices"><span class="nav-number"></span> <span class="nav-text">Constant Time Suffices</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Valine-评论系统"><span class="nav-number">1.</span> <span class="nav-text">Valine 评论系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置"><span class="nav-number">1.1.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#注册-LeanCloud"><span class="nav-number">1.1.1.</span> <span class="nav-text">注册 LeanCloud</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#设置-Next-主题"><span class="nav-number">1.1.2.</span> <span class="nav-text">设置 Next 主题</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#评论管理"><span class="nav-number">1.2.</span> <span class="nav-text">评论管理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gitment-评论系统"><span class="nav-number">2.</span> <span class="nav-text">Gitment 评论系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注册OAuth-application"><span class="nav-number">2.1.</span> <span class="nav-text">注册OAuth application</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新建存放博客评论仓库"><span class="nav-number">2.2.</span> <span class="nav-text">新建存放博客评论仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置-next-主题文件"><span class="nav-number">2.3.</span> <span class="nav-text">配置 next 主题文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化"><span class="nav-number">2.4.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#评论"><span class="nav-number">2.5.</span> <span class="nav-text">评论</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭某个页面的评论"><span class="nav-number">3.</span> <span class="nav-text">关闭某个页面的评论</span></a></li></ol></div>
             
 
           </div>
