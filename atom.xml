@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://shiningstarpxx.github.com/"/>
-  <updated>2019-04-12T13:51:47.447Z</updated>
+  <updated>2019-04-24T12:08:11.511Z</updated>
   <id>http://shiningstarpxx.github.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java项目使用bazel</title>
+    <link href="http://shiningstarpxx.github.com/2019/04/24/java%E9%A1%B9%E7%9B%AE%E4%BD%BF%E7%94%A8bazel/"/>
+    <id>http://shiningstarpxx.github.com/2019/04/24/java项目使用bazel/</id>
+    <published>2019-04-24T08:58:23.000Z</published>
+    <updated>2019-04-24T12:08:11.511Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>现代项目中，大多很难做到单一语言开发。以在线服务举例，比如传统的管理系统大多是php，python来写的，数据进入db，大多是mysql；而对线上提供服务的可能是c/c++, java, 也可能是go，也可能是erlang，当然也可以用php，python，nodejs；数据处理部分则大多是java，scala或者python；报表数据处理则通常是sql。这么多项目的代码如何组织，成为了一个专门的课题，几乎每个大型项目都有一个规模或大或小的团队来专门维护代码仓库；其中最难管理的部分是，如何统一各个不同语言的构建，以期望能做到ci &amp; cd。</p><p>当然，粗暴的方法是每个子项目自己出人，自己构建，自己维护特定的ci &amp; cd。这种方案最大的特点是，直接；但是造成的资源浪费，以及先进的生产力无法复用，也将是必然的事情。</p><p>所以，顶级的公司的解决方案，是提供整个项目统一构建的能力，比如google的Bazel，facebook的buck，腾讯的blade都算是业界中相对比较好用的。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h3&gt;&lt;p&gt;现代项目中，大多很难做到单一语言开发。以在线服务举例，比如传统的管理系统大多是php，python来写的，数据进入db，大多是mysql；而
+      
+    
+    </summary>
+    
+      <category term="统一构建" scheme="http://shiningstarpxx.github.com/categories/%E7%BB%9F%E4%B8%80%E6%9E%84%E5%BB%BA/"/>
+    
+    
+      <category term="bazel" scheme="http://shiningstarpxx.github.com/tags/bazel/"/>
+    
+      <category term="java" scheme="http://shiningstarpxx.github.com/tags/java/"/>
+    
+      <category term="maven" scheme="http://shiningstarpxx.github.com/tags/maven/"/>
+    
+  </entry>
   
   <entry>
     <title>kafka-介绍-4</title>
