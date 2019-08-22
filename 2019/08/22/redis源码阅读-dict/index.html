@@ -96,18 +96,21 @@
 
 
 
-  <meta name="description" content="API 部分Kafka includes five core apis:  The Producer API allows applications to send streams of data to topics in the Kafka cluster. The Consumer API allows applications to read streams of data from top">
-<meta name="keywords" content="StreamingSystem,MQ">
+  <meta name="description" content="Redis字典具有以下特点： Redis字典的底层实现为哈希表， 每个字典使用两个哈希表， 一般情况下只使用 0 号哈希表， 只有在 rehash 进行时， 才会同时使用 0 号和 1 号哈希表。 哈希表使用链地址法来解决键冲突的问题。 自动 Rehash 扩展或收缩哈希表。 对哈希表的 rehash 是分多次、渐进式地进行的。  数据结构12345678910111213141516171819">
+<meta name="keywords" content="redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="kafka-介绍-3.md">
-<meta property="og:url" content="http://shiningstarpxx.github.com/2019/04/10/kafka-介绍-3/index.html">
+<meta property="og:title" content="redis源码阅读-dict">
+<meta property="og:url" content="http://shiningstarpxx.github.com/2019/08/22/redis源码阅读-dict/index.html">
 <meta property="og:site_name" content="XStarX World">
-<meta property="og:description" content="API 部分Kafka includes five core apis:  The Producer API allows applications to send streams of data to topics in the Kafka cluster. The Consumer API allows applications to read streams of data from top">
+<meta property="og:description" content="Redis字典具有以下特点： Redis字典的底层实现为哈希表， 每个字典使用两个哈希表， 一般情况下只使用 0 号哈希表， 只有在 rehash 进行时， 才会同时使用 0 号和 1 号哈希表。 哈希表使用链地址法来解决键冲突的问题。 自动 Rehash 扩展或收缩哈希表。 对哈希表的 rehash 是分多次、渐进式地进行的。  数据结构12345678910111213141516171819">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-12T02:58:59.132Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/shiningstarpxx/blog_pic/master/dic1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shiningstarpxx/blog_pic/master/dic2.png">
+<meta property="og:updated_time" content="2019-08-22T01:13:25.548Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kafka-介绍-3.md">
-<meta name="twitter:description" content="API 部分Kafka includes five core apis:  The Producer API allows applications to send streams of data to topics in the Kafka cluster. The Consumer API allows applications to read streams of data from top">
+<meta name="twitter:title" content="redis源码阅读-dict">
+<meta name="twitter:description" content="Redis字典具有以下特点： Redis字典的底层实现为哈希表， 每个字典使用两个哈希表， 一般情况下只使用 0 号哈希表， 只有在 rehash 进行时， 才会同时使用 0 号和 1 号哈希表。 哈希表使用链地址法来解决键冲突的问题。 自动 Rehash 扩展或收缩哈希表。 对哈希表的 rehash 是分多次、渐进式地进行的。  数据结构12345678910111213141516171819">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/shiningstarpxx/blog_pic/master/dic1.png">
 
 
 
@@ -117,7 +120,7 @@
 
   
   
-  <link rel="canonical" href="http://shiningstarpxx.github.com/2019/04/10/kafka-介绍-3/">
+  <link rel="canonical" href="http://shiningstarpxx.github.com/2019/08/22/redis源码阅读-dict/">
 
 
 
@@ -127,7 +130,7 @@
   };
 </script>
 
-  <title>kafka-介绍-3.md | XStarX World</title>
+  <title>redis源码阅读-dict | XStarX World</title>
   
 
 
@@ -360,7 +363,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://shiningstarpxx.github.com/2019/04/10/kafka-介绍-3/">
+    <link itemprop="mainEntityOfPage" href="http://shiningstarpxx.github.com/2019/08/22/redis源码阅读-dict/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Pei, Xingxin">
@@ -377,7 +380,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">kafka-介绍-3.md
+          <h1 class="post-title" itemprop="name headline">redis源码阅读-dict
 
               
             
@@ -403,24 +406,12 @@
                 
               
 
-              <time title="Created: 2019-04-10 20:28:41" itemprop="dateCreated datePublished" datetime="2019-04-10T20:28:41+08:00">2019-04-10</time>
+              <time title="Created: 2019-08-22 09:07:08 / Modified: 09:13:25" itemprop="dateCreated datePublished" datetime="2019-08-22T09:07:08+08:00">2019-08-22</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-04-12 10:58:59" itemprop="dateModified" datetime="2019-04-12T10:58:59+08:00">2019-04-12</time>
               
             
           </span>
@@ -438,8 +429,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/04/10/kafka-介绍-3/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/04/10/kafka-介绍-3/" itemprop="commentCount"></span>
+                <a href="/2019/08/22/redis源码阅读-dict/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/08/22/redis源码阅读-dict/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -467,36 +458,28 @@
       
 
       
-        <h5 id="API-部分"><a href="#API-部分" class="headerlink" title="API 部分"></a><a href="http://kafka.apache.org/documentation/#api" target="_blank" rel="noopener">API 部分</a></h5><p>Kafka includes five core apis:</p>
-<ol>
-<li>The <a href="http://kafka.apache.org/documentation/#producerapi" target="_blank" rel="noopener">Producer</a> API allows applications to send streams of data to topics in the Kafka cluster.</li>
-<li>The <a href="http://kafka.apache.org/documentation/#consumerapi" target="_blank" rel="noopener">Consumer</a> API allows applications to read streams of data from topics in the Kafka cluster.</li>
-<li>The <a href="http://kafka.apache.org/documentation/#streamsapi" target="_blank" rel="noopener">Streams</a> API allows transforming streams of data from input topics to output topics.</li>
-<li>The <a href="http://kafka.apache.org/documentation/#connectapi" target="_blank" rel="noopener">Connect</a> API allows implementing connectors that continually pull from some source system or application into Kafka or push from Kafka into some sink system or application.</li>
-<li>The <a href="http://kafka.apache.org/documentation/#adminapi" target="_blank" rel="noopener">AdminClient</a> API allows managing and inspecting topics, brokers, and other Kafka objects.</li>
-</ol>
-<p>Kafka exposes all its functionality over a language independent protocol which has clients available in many programming languages. However only the Java clients are maintained as part of the main Kafka project, the others are available as independent open source projects. A list of non-Java clients is available</p>
-<h5 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h5><h6 id="动机"><a href="#动机" class="headerlink" title="动机"></a><a href="http://kafka.apache.org/documentation/#majordesignelements" target="_blank" rel="noopener">动机</a></h6><p>We designed Kafka to be able to act as a unified platform for handling all the real-time data feeds <a href="http://kafka.apache.org/documentation/#introduction" target="_blank" rel="noopener">a large company might have</a>. To do this we had to think through a fairly broad set of use cases. 设计初衷就是为了满足所有的实时数据消费</p>
-<p>It would have to have high-throughput to support high volume event streams such as real-time log aggregation. 高吞吐， 比如real-time 日志聚合</p>
-<p>It would need to deal gracefully with large data backlogs to be able to support periodic data loads from offline systems. 需要优雅的解决离线系统周期性读取大量数据</p>
-<p>It also meant the system would have to handle low-latency delivery to handle more traditional messaging use-cases. 必须low-latency的发送消息</p>
-<p>We wanted to support partitioned, distributed, real-time processing of these feeds to create new, derived feeds. This motivated our partitioning and consumer model. 必须支持partitioned，分布式的，实时的处理消息。这个促使我们分区和消费者模型</p>
-<p>Finally in cases where the stream is fed into other data systems for serving, we knew the system would have to be able to guarantee fault-tolerance in the presence of machine failures. 必须做fault-tolerance来应对机器的failures。</p>
-<p>Supporting these uses led us to a design with a number of unique elements, more akin to a database log than a traditional messaging system. We will outline some elements of the design in the following sections.</p>
-<h6 id="持久化，persistence"><a href="#持久化，persistence" class="headerlink" title="持久化，persistence"></a><a href="http://kafka.apache.org/documentation/#persistence" target="_blank" rel="noopener">持久化，persistence</a></h6><h4 id="Don’t-fear-the-filesystem"><a href="#Don’t-fear-the-filesystem" class="headerlink" title="Don’t fear the filesystem!"></a><a href="http://kafka.apache.org/documentation/#design_filesystem" target="_blank" rel="noopener">Don’t fear the filesystem!</a></h4><p>Kafka relies heavily on the filesystem for storing and caching messages. There is a general perception that “disks are slow” which makes people skeptical that a persistent structure can offer competitive performance. In fact disks are both much slower and much faster than people expect depending on how they are used; and a properly designed disk structure can often be as fast as the network. 合适的disk结构可以跟网络一样快！！！</p>
-<p>The key fact about disk performance is that the throughput of hard drives has been diverging from the latency of a disk seek for the last decade. As a result the performance of linear writes on a <a href="http://en.wikipedia.org/wiki/Non-RAID_drive_architectures" target="_blank" rel="noopener">JBOD</a> configuration with six 7200rpm SATA RAID-5 array is about 600MB/sec but the performance of random writes is only about 100k/sec—a difference of over 6000X. These linear reads and writes are the most predictable of all usage patterns, and are heavily optimized by the operating system. A modern operating system provides read-ahead and write-behind techniques that prefetch data in large block multiples and group smaller logical writes into large physical writes. A further discussion of this issue can be found in this <a href="http://queue.acm.org/detail.cfm?id=1563874" target="_blank" rel="noopener">ACM Queue article</a>; they actually find that <a href="http://deliveryimages.acm.org/10.1145/1570000/1563874/jacobs3.jpg" target="_blank" rel="noopener">sequential disk access can in some cases be faster than random memory access!</a></p>
-<p>To compensate for this performance divergence, modern operating systems have become increasingly aggressive in their use of main memory for disk caching. A modern OS will happily divert <em>all</em> free memory to disk caching with little performance penalty when the memory is reclaimed. All disk reads and writes will go through this unified cache. This feature cannot easily be turned off without using direct I/O, so even if a process maintains an in-process cache of the data, this data will likely be duplicated in OS pagecache, effectively storing everything twice. 现代操作系统都是用内存来加速磁盘，所以极端情况，内存数据同时在OS的页缓存上也有，相当于每个东西被存储了两次</p>
-<p>Furthermore, we are building on top of the JVM, and anyone who has spent any time with Java memory usage knows two things: JVM的特性</p>
-<ol>
-<li>The memory overhead of objects is very high, often doubling the size of the data stored (or worse). 存储对象前的空间非常大，通常是已经存储数据大小的两倍</li>
-<li>Java garbage collection becomes increasingly fiddly and slow as the in-heap data increases. Java的垃圾回收在堆数据增加的情况下，会变得很慢和繁琐的</li>
-</ol>
-<p>As a result of these factors using the filesystem and relying on pagecache is superior to maintaining an in-memory cache or other structure—we at least double the available cache by having automatic access to all free memory, and likely double again by storing a compact byte structure rather than individual objects.  直接依赖pagecache使用文件系统比在内存中使用cache或者其他数据结构更优，至少我们可以直接获得两倍大小的内存，如果使用压缩结构可以再获得两倍的空间。Doing so will result in a cache of up to 28-30GB on a 32GB machine without GC penalties. 比如，在32G的内存下cache可以达到28-30G，并且没有GC。Furthermore, this cache will stay warm even if the service is restarted, whereas the in-process cache will need to be rebuilt in memory (which for a 10GB cache may take 10 minutes) or else it will need to start with a completely cold cache (which likely means terrible initial performance). 并且，这种cache可以直接使用即使服务重启，而且内存结构需要重新构建或者重新初始化。This also greatly simplifies the code as all logic for maintaining coherency between the cache and filesystem is now in the OS, which tends to do so more efficiently and more correctly than one-off in-process attempts. If your disk usage favors linear reads then read-ahead is effectively pre-populating this cache with useful data on each disk read. 这样同样可以大幅度简化代码维护cache和文件系统一致性的问题，os可以做的更有效率更准确。</p>
-<p>This suggests a design which is very simple: rather than maintain as much as possible in-memory and flush it all out to the filesystem in a panic when we run out of space, we invert that. All data is immediately written to a persistent log on the filesystem without necessarily flushing to disk. In effect this just means that it is transferred into the kernel’s pagecache. 这建议了一个简单的设计：与其维护一个内存结构然后再刷入磁盘， 不如所有数据写入持久化的文件系统，而不是必要时刷盘。事实上，这意味着我们把写入转化到了kernerl的pagecache.</p>
-<p>This style of pagecache-centric design is described in an <a href="http://varnish-cache.org/wiki/ArchitectNotes" target="_blank" rel="noopener">article</a> on the design of Varnish here (along with a healthy dose of arrogance). </p>
-<h4 id="Constant-Time-Suffices"><a href="#Constant-Time-Suffices" class="headerlink" title="Constant Time Suffices"></a><a href="http://kafka.apache.org/documentation/#design_constanttime" target="_blank" rel="noopener">Constant Time Suffices</a></h4><p>The persistent data structure used in messaging systems are often a per-consumer queue with an associated BTree or other general-purpose random access data structures to maintain metadata about messages. BTrees are the most versatile data structure available, and make it possible to support a wide variety of transactional and non-transactional semantics in the messaging system. They do come with a fairly high cost, though: Btree operations are O(log N). Normally O(log N) is considered essentially equivalent to constant time, but this is not true for disk operations. Disk seeks come at 10 ms a pop, and each disk can do only one seek at a time so parallelism is limited. Hence even a handful of disk seeks leads to very high overhead. Since storage systems mix very fast cached operations with very slow physical disk operations, the observed performance of tree structures is often superlinear as data increases with fixed cache–i.e. doubling your data makes things much worse than twice as slow. 传统的BTree的 O(log N)在磁盘下不适合。</p>
-<p>Intuitively a persistent queue could be built on simple reads and appends to files as is commonly the case with logging solutions. This structure has the advantage that all operations are O(1) and reads do not block writes or each other. This has obvious performance advantages since the performance is completely decoupled from the data size—one server can now take full advantage of a number of cheap, low-rotational speed 1+TB SATA drives. Though they have poor seek performance, these drives have acceptable performance for large reads and writes and come at 1/3 the price and 3x the capacity. logging的解决方案，大概是1/3的价格，3倍的容量。</p>
-<p>Having access to virtually unlimited disk space without any performance penalty means that we can provide some features not usually found in a messaging system. For example, in Kafka, instead of attempting to delete messages as soon as they are consumed, we can retain messages for a relatively long period (say a week). This leads to a great deal of flexibility for consumers, as we will describe. 这种方案可以提供传统消息系统无法提供的优势。</p>
+        <h4 id="Redis字典具有以下特点："><a href="#Redis字典具有以下特点：" class="headerlink" title="Redis字典具有以下特点："></a>Redis字典具有以下特点：</h4><ul>
+<li>Redis字典的底层实现为哈希表，</li>
+<li>每个字典使用两个哈希表， 一般情况下只使用 0 号哈希表， 只有在 rehash 进行时， 才会同时使用 0 号和 1 号哈希表。</li>
+<li>哈希表使用链地址法来解决键冲突的问题。</li>
+<li>自动 Rehash 扩展或收缩哈希表。</li>
+<li>对哈希表的 rehash 是分多次、渐进式地进行的。</li>
+</ul>
+<h4 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * hash节点</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">dictEntry</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//键</span></span><br><span class="line">    <span class="keyword">void</span> *key;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//值</span></span><br><span class="line">    <span class="keyword">union</span> &#123;</span><br><span class="line">        <span class="keyword">void</span> *val;</span><br><span class="line">        <span class="keyword">uint64_t</span> u64;</span><br><span class="line">        <span class="keyword">int64_t</span> s64;</span><br><span class="line">    &#125; v;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//指向下一个节点</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">dictEntry</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125; dictEntry;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">dictht</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//桶</span></span><br><span class="line">    dictEntry **table;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//指针数组大小</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> size;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//指针数组掩码，用于计算索引值</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> sizemask;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//hash表现有节点数量</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> used;</span><br><span class="line">&#125; dictht;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">dict</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//类型处理函数</span></span><br><span class="line">    dictType *type;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//类型处理函数私有值</span></span><br><span class="line">    <span class="keyword">void</span> *privdata;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//两个hash表</span></span><br><span class="line">    dictht ht[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">//rehash标示，为－1表示不在rehash，不为0表示正在rehash的桶</span></span><br><span class="line">    <span class="keyword">int</span> rehashidx; <span class="comment">/* rehashing not in progress if rehashidx == -1 */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//当前正在运行的安全迭代器数量</span></span><br><span class="line">    <span class="keyword">int</span> iterators; <span class="comment">/* number of iterators currently running */</span></span><br><span class="line">&#125; dict;</span><br></pre></td></tr></table></figure>
+<h4 id="dic的数据结构"><a href="#dic的数据结构" class="headerlink" title="dic的数据结构"></a>dic的数据结构</h4><p><img src="https://raw.githubusercontent.com/shiningstarpxx/blog_pic/master/dic1.png" alt></p>
+<h4 id="字典中添加元素的过程"><a href="#字典中添加元素的过程" class="headerlink" title="字典中添加元素的过程"></a>字典中添加元素的过程</h4><p><img src="https://raw.githubusercontent.com/shiningstarpxx/blog_pic/master/dic2.png" alt></p>
+<h2 id="rehash介绍"><a href="#rehash介绍" class="headerlink" title="rehash介绍"></a>rehash介绍</h2><p>字典的 rehash 操作实际上就是执行以下任务：</p>
+<p>创建一个比 ht[0]-&gt;table 更大的 ht[1]-&gt;table ， size为大于used*2的2的指数, 开始值为4；</p>
+<p>将 ht[0]-&gt;table 中的所有键值对迁移到 ht[1]-&gt;table ；</p>
+<p>将原有 ht[0] 的数据清空，并将 ht[1] 替换为新的 ht[0] ；</p>
+<p>进行rehash的条件：</p>
+<p>自然 rehash ： ratio &gt;= 1 ，且变量 dict_can_resize 为真。</p>
+<p>强制 rehash ： ratio 大于变量 dict_force_resize_ratio （目前版本中， dict_force_resize_ratio 的值为 5 ）。</p>
+<p>阶进rehash：</p>
+<p>主动方式：databaseCron中调用dictRehashMilliseconds执行一毫秒。</p>
+<p>被动方式：调用dictAdd，dicFind，dictDelete，dictGetRandomKey时，调用_dictRehashStep，迁移一个非空桶。</p>
 
       
     </div>
@@ -553,9 +536,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/StreamingSystem/" rel="tag"># StreamingSystem</a>
-          
-            <a href="/tags/MQ/" rel="tag"># MQ</a>
+            <a href="/tags/redis/" rel="tag"># redis</a>
           
         </div>
       
@@ -568,8 +549,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/06/kafka-介绍-2/" rel="next" title="kafka-介绍-2">
-                <i class="fa fa-chevron-left"></i> kafka-介绍-2
+              <a href="/2019/08/22/redis源码阅读-adlist/" rel="next" title="redis源码阅读-adlist">
+                <i class="fa fa-chevron-left"></i> redis源码阅读-adlist
               </a>
             
           </div>
@@ -577,10 +558,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/12/kafka-介绍-4/" rel="prev" title="kafka-介绍-4">
-                kafka-介绍-4 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -796,7 +773,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#API-部分"><span class="nav-number">1.</span> <span class="nav-text">API 部分</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#设计"><span class="nav-number">2.</span> <span class="nav-text">设计</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#动机"><span class="nav-number">2.1.</span> <span class="nav-text">动机</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#持久化，persistence"><span class="nav-number">2.2.</span> <span class="nav-text">持久化，persistence</span></a></li></ol></li></ol><li class="nav-item nav-level-4"><a class="nav-link" href="#Don’t-fear-the-filesystem"><span class="nav-number"></span> <span class="nav-text">Don’t fear the filesystem!</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Constant-Time-Suffices"><span class="nav-number"></span> <span class="nav-text">Constant Time Suffices</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Redis字典具有以下特点："><span class="nav-number">1.</span> <span class="nav-text">Redis字典具有以下特点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据结构"><span class="nav-number">2.</span> <span class="nav-text">数据结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dic的数据结构"><span class="nav-number">3.</span> <span class="nav-text">dic的数据结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字典中添加元素的过程"><span class="nav-number">4.</span> <span class="nav-text">字典中添加元素的过程</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#rehash介绍"><span class="nav-number"></span> <span class="nav-text">rehash介绍</span></a></li></div>
             
 
           </div>
