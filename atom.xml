@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://shiningstarpxx.github.com/"/>
-  <updated>2019-08-22T12:38:24.922Z</updated>
+  <updated>2019-08-26T10:44:10.868Z</updated>
   <id>http://shiningstarpxx.github.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>redis源码阅读-跳表</title>
+    <link href="http://shiningstarpxx.github.com/2019/08/23/redis%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB-%E8%B7%B3%E8%A1%A8/"/>
+    <id>http://shiningstarpxx.github.com/2019/08/23/redis源码阅读-跳表/</id>
+    <published>2019-08-23T01:25:39.000Z</published>
+    <updated>2019-08-26T10:44:10.868Z</updated>
+    
+    <content type="html"><![CDATA[<p>先看一下原始的skiplist, <a href="https://epaperpress.com/sortsearch/download/skiplist.pdf" target="_blank" rel="noopener">Skip Lists: A Probabilistic Altervative to Balanced Trees</a> . 既然是一个list，那么普通的list有什么问题</p><p><img src="https://github.com/shiningstarpxx/blog_pic/blob/master/sorted_linked_list.png?raw=true" alt></p><p>在链表中查找一个目标值，平均时间复杂度是O(n), 不管链表是否有序。通常这种判断目标值是否存在通常的解决办法是</p><ol><li>hash table</li><li>有序数组，二分查找</li><li><p>各种平衡树</p><p>那能否在list的数据结构下，也有类似平衡树的效率呢。上面的论文就按照这个思路，设计出了一套解决方案。</p></li></ol><p>试想如果链表里单数的节点互相连接，这样查找一个数据的平均次数可以减少一半。如下图所示，</p><p><img src="https://github.com/shiningstarpxx/blog_pic/blob/master/skip2node_linked_list.png?raw=true" alt></p><p>假如寻找23，之间是一共遍历6个节点，现在是4个节点，减少一半是n/2 + 1,</p><p><img src="https://github.com/shiningstarpxx/blog_pic/blob/master/search_path_on_skip2node_list.png?raw=true" alt></p><p>如果层数变成三层，一次跳过的节点会更多。</p><p><img src="https://github.com/shiningstarpxx/blog_pic/blob/master/skip2node_level3_linked_list.png?raw=true" alt></p><p>整体的思想如上，论文里对于一些细节做了进一步优化，对于空间效率和查找效率之间做了一些平衡，在保障查找效率的情况下，空间上也进一步得到了压缩。感兴趣可以进一步深入研究论文，下面只给出一个skiplist构建的可能过程示意</p><p><img src="https://github.com/shiningstarpxx/blog_pic/blob/master/skiplist_insertions.png?raw=true" alt></p><p>Redisli的zskiplist 里面数据存储的情况如下 </p><p><img src="https://github.com/shiningstarpxx/blog_pic/blob/master/redis_skiplist_example.png?raw=true" alt></p><ul><li>源码分析部分</li></ul><p>跳表的创建很有意思，list中的level默认是一，不会用第一个节点的level来更新list的level</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Create a new skiplist. */</span></span><br><span class="line"><span class="function">zskiplist *<span class="title">zslCreate</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> j;</span><br><span class="line">    zskiplist *zsl;</span><br><span class="line"></span><br><span class="line">    zsl = zmalloc(<span class="keyword">sizeof</span>(*zsl));</span><br><span class="line">    zsl-&gt;level = <span class="number">1</span>;</span><br><span class="line">    zsl-&gt;length = <span class="number">0</span>;</span><br><span class="line">    zsl-&gt;header = zslCreateNode(ZSKIPLIST_MAXLEVEL,<span class="number">0</span>,<span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; ZSKIPLIST_MAXLEVEL; j++) &#123;</span><br><span class="line">        zsl-&gt;header-&gt;level[j].forward = <span class="literal">NULL</span>;</span><br><span class="line">        zsl-&gt;header-&gt;level[j].span = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    zsl-&gt;header-&gt;backward = <span class="literal">NULL</span>;</span><br><span class="line">    zsl-&gt;tail = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> zsl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;先看一下原始的skiplist, &lt;a href=&quot;https://epaperpress.com/sortsearch/download/skiplist.pdf&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Skip Lists: A Probabil
+      
+    
+    </summary>
+    
+    
+      <category term="redis" scheme="http://shiningstarpxx.github.com/tags/redis/"/>
+    
+  </entry>
   
   <entry>
     <title>redis源码阅读-sds字符串</title>
