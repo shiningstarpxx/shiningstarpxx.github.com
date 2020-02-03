@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="背景现代项目中，大多很难做到单一语言开发。以在线服务举例，比如传统的管理系统大多是php，python来写的，数据进入db，大多是mysql；而对线上提供服务的可能是c/c++, java, 也可能是go，也可能是erlang，当然也可以用php，python，nodejs；数据处理部分则大多是java，scala或者python；报表数据处理则通常是sql。这么多项目的代码如何组织，成为了一个专">
-<meta name="keywords" content="bazel,java,maven">
+  <meta name="description" content="在mac上安装kafka很简单，直接brew install 即可。安装完之后启动，参照brew的提示 1234# To have launchd start kafka now and restart at login:brew services start kafka# Or, if you don&apos;t want/need a background service you can just r">
+<meta name="keywords" content="Kafka">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java项目使用bazel">
-<meta property="og:url" content="http://shiningstarpxx.github.com/2019/04/24/java项目使用bazel/index.html">
+<meta property="og:title" content="kafka use">
+<meta property="og:url" content="http://shiningstarpxx.github.com/2020/02/03/kafka-use/index.html">
 <meta property="og:site_name" content="XStarX World">
-<meta property="og:description" content="背景现代项目中，大多很难做到单一语言开发。以在线服务举例，比如传统的管理系统大多是php，python来写的，数据进入db，大多是mysql；而对线上提供服务的可能是c/c++, java, 也可能是go，也可能是erlang，当然也可以用php，python，nodejs；数据处理部分则大多是java，scala或者python；报表数据处理则通常是sql。这么多项目的代码如何组织，成为了一个专">
+<meta property="og:description" content="在mac上安装kafka很简单，直接brew install 即可。安装完之后启动，参照brew的提示 1234# To have launchd start kafka now and restart at login:brew services start kafka# Or, if you don&apos;t want/need a background service you can just r">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-24T13:33:22.730Z">
+<meta property="og:updated_time" content="2020-02-03T08:34:59.239Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java项目使用bazel">
-<meta name="twitter:description" content="背景现代项目中，大多很难做到单一语言开发。以在线服务举例，比如传统的管理系统大多是php，python来写的，数据进入db，大多是mysql；而对线上提供服务的可能是c/c++, java, 也可能是go，也可能是erlang，当然也可以用php，python，nodejs；数据处理部分则大多是java，scala或者python；报表数据处理则通常是sql。这么多项目的代码如何组织，成为了一个专">
+<meta name="twitter:title" content="kafka use">
+<meta name="twitter:description" content="在mac上安装kafka很简单，直接brew install 即可。安装完之后启动，参照brew的提示 1234# To have launchd start kafka now and restart at login:brew services start kafka# Or, if you don&apos;t want/need a background service you can just r">
 
 
 
@@ -117,7 +117,7 @@
 
   
   
-  <link rel="canonical" href="http://shiningstarpxx.github.com/2019/04/24/java项目使用bazel/">
+  <link rel="canonical" href="http://shiningstarpxx.github.com/2020/02/03/kafka-use/">
 
 
 
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>java项目使用bazel | XStarX World</title>
+  <title>kafka use | XStarX World</title>
   
 
 
@@ -360,7 +360,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://shiningstarpxx.github.com/2019/04/24/java项目使用bazel/">
+    <link itemprop="mainEntityOfPage" href="http://shiningstarpxx.github.com/2020/02/03/kafka-use/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Pei, Xingxin">
@@ -377,7 +377,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java项目使用bazel
+          <h1 class="post-title" itemprop="name headline">kafka use
 
               
             
@@ -403,7 +403,7 @@
                 
               
 
-              <time title="Created: 2019-04-24 16:58:23 / Modified: 21:33:22" itemprop="dateCreated datePublished" datetime="2019-04-24T16:58:23+08:00">2019-04-24</time>
+              <time title="Created: 2020-02-03 15:26:32 / Modified: 16:34:59" itemprop="dateCreated datePublished" datetime="2020-02-03T15:26:32+08:00">2020-02-03</time>
             
 
             
@@ -413,24 +413,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/统一构建/" itemprop="url" rel="index"><span itemprop="name">统一构建</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -444,8 +426,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/04/24/java项目使用bazel/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/04/24/java项目使用bazel/" itemprop="commentCount"></span>
+                <a href="/2020/02/03/kafka-use/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2020/02/03/kafka-use/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -473,27 +455,20 @@
       
 
       
-        <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>现代项目中，大多很难做到单一语言开发。以在线服务举例，比如传统的管理系统大多是php，python来写的，数据进入db，大多是mysql；而对线上提供服务的可能是c/c++, java, 也可能是go，也可能是erlang，当然也可以用php，python，nodejs；数据处理部分则大多是java，scala或者python；报表数据处理则通常是sql。这么多项目的代码如何组织，成为了一个专门的课题，几乎每个大型项目都有一个规模或大或小的团队来专门维护代码仓库；其中最难管理的部分是，如何统一各个不同语言的构建，以期望能做到ci &amp; cd。</p>
-<p>当然，粗暴的方法是每个子项目自己出人，自己构建，自己维护特定的ci &amp; cd。这种方案最大的特点是，直接；但是造成的资源浪费，以及先进的生产力无法复用，也将是必然的事情。</p>
-<p>所以，顶级的公司的解决方案，是提供整个项目统一构建的能力，比如google的Bazel，facebook的buck，腾讯的blade都算是业界中相对比较好用的。</p>
-<h3 id="Bazel使用"><a href="#Bazel使用" class="headerlink" title="Bazel使用"></a>Bazel使用</h3><p>bazel，buck，blade都有人使用；在之前的项目中是全部使用了blade，其实blade也非常好用了。不过bazel因为支持了tensorflow，再者bazel的跨平台性要更好；另外，我猜测g家的开源质量相对比较高，后续的维护升级应该不成问题。故在新的项目中尝试引入了bazel。</p>
-<p>目前新的项目，大量子项目是用golang写的，另外一部分是java项目，之前用maven编译。现在面临的问题是，如果顺利的把项目从maven迁移到bazel。</p>
-<p>尝试迁移的过程中，遇到了很多问题，这里一一记录下来，后续可以回顾和借鉴。</p>
-<h4 id="配置WORKSPACE"><a href="#配置WORKSPACE" class="headerlink" title="配置WORKSPACE"></a>配置WORKSPACE</h4><p>为了支持maven，要把对应的maven里的配置改成WORKSPACE中的maven_jar, 这里举例说明</p>
-<p>Maven 的配置如下：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.yaml<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>snakeyaml<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.21<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.11<span class="tag">&lt;/<span class="name">version</span>&gt;</span> <span class="comment">&lt;!-- Or whatever JUnit you're using. --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>对应的WORKSPACE如下, 目前url尝试换成了国内ali云的并不成功，这里需要TODO去研究一下为什么。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">25</span> maven_jar(</span><br><span class="line"><span class="number">26</span>         name = <span class="string">"org_yaml"</span>,</span><br><span class="line"><span class="number">27</span>         artifact = <span class="string">"org.yaml:snakeyaml:1.21"</span>,</span><br><span class="line"><span class="number">28</span>     server = <span class="string">"maven_uk_server"</span>,</span><br><span class="line"><span class="number">29</span> )</span><br><span class="line"><span class="number">30</span></span><br><span class="line"><span class="number">31</span> maven_jar(</span><br><span class="line"><span class="number">32</span>         name = <span class="string">"junit"</span>,</span><br><span class="line"><span class="number">33</span>         artifact = <span class="string">"junit:junit:4.11"</span>,</span><br><span class="line"><span class="number">34</span>     server = <span class="string">"maven_uk_server"</span>,</span><br><span class="line"><span class="number">35</span> )</span><br><span class="line"><span class="number">36</span></span><br><span class="line"><span class="number">37</span> maven_server(</span><br><span class="line"><span class="number">38</span>     name = <span class="string">"maven_uk_server"</span>,</span><br><span class="line"><span class="number">39</span>     url = <span class="string">"http://uk.maven.org/maven2"</span>,</span><br><span class="line"><span class="number">43</span> )</span><br></pre></td></tr></table></figure>
-<h4 id="编写BUILD文件"><a href="#编写BUILD文件" class="headerlink" title="编写BUILD文件"></a>编写BUILD文件</h4><p>经过半天调试，支持了原生java，用maven的包，以及相应的test。build文件如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> <span class="number">1</span> java_library(</span><br><span class="line"> <span class="number">2</span>     name = <span class="string">"common"</span>,</span><br><span class="line"> <span class="number">3</span>     srcs = glob([<span class="string">"src/main/java/**/*.java"</span>]),</span><br><span class="line"> <span class="number">4</span>     resources = glob([<span class="string">"src/main/resources/*"</span>]),</span><br><span class="line"> <span class="number">6</span>     deps = [</span><br><span class="line"> <span class="number">7</span>     	<span class="string">"@org_yaml//jar"</span>,</span><br><span class="line"> <span class="number">8</span>     ],</span><br><span class="line"> <span class="number">9</span> )</span><br><span class="line"><span class="number">10</span></span><br><span class="line"><span class="number">11</span> java_test(</span><br><span class="line"><span class="number">12</span>         name = <span class="string">"targeting_id_parser_test"</span>,</span><br><span class="line"><span class="number">13</span>         srcs = [<span class="string">"src/test/java/com/adshonor/datacube/TargetingIdParserTest.java"</span>],</span><br><span class="line"><span class="number">14</span>         test_class = <span class="string">"com.adshonor.datacube.TargetingIdParserTest"</span>,</span><br><span class="line"><span class="number">15</span>         data = glob([<span class="string">"src/main/resources/*"</span>]),</span><br><span class="line"><span class="number">16</span>         deps = [</span><br><span class="line"><span class="number">17</span>             <span class="string">"common"</span>,</span><br><span class="line"><span class="number">18</span>             <span class="string">"@junit//jar"</span>,</span><br><span class="line"><span class="number">19</span>         ],</span><br><span class="line"><span class="number">20</span> )</span><br></pre></td></tr></table></figure>
-<p>需要注意的几点</p>
-<ul>
-<li>maven包依赖的写法 “@**//jar”</li>
-<li>test中一定要指明test_class</li>
-<li>test中如果用了解析配置文件，语法是data = ***</li>
-<li>test中解析配置文件的路径一定是从WORKSPACE所在的路径写起，因为bazel应该是在WORKSPACE所在的root下面执行的。</li>
-</ul>
-<p>参照上面的例子去写，对应的java一定可以编译过。有疑问欢迎随时交流。</p>
+        <p>在mac上安装kafka很简单，直接brew install 即可。安装完之后启动，参照brew的提示</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># To have launchd start kafka now and restart at login:</span></span><br><span class="line">brew services start kafka</span><br><span class="line"><span class="comment"># Or, if you don't want/need a background service you can just run:</span></span><br><span class="line">zookeeper-server-start /usr/<span class="built_in">local</span>/etc/kafka/zookeeper.properties &amp; kafka-server-start /usr/<span class="built_in">local</span>/etc/kafka/server.properties</span><br></pre></td></tr></table></figure>
+<p>稳妥点，可以分别执行上面的命令来判断服务是否能正常启动，如果不能，大概率是之前安装过，有些过期的文件，可以考虑进入到目录删除。</p>
+<p>重要的一步是需要修改一个配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/<span class="built_in">local</span>/etc/kafka/server.properties</span><br></pre></td></tr></table></figure>
+<p>然后在下面的后面修改一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#listeners=PLAINTEXT://:9092</span><br><span class="line">listeners=PLAINTEXT://localhost:9092</span><br></pre></td></tr></table></figure>
+<p>服务正常启动后就可以进入下面的环节了。</p>
+<h5 id="创建Topic"><a href="#创建Topic" class="headerlink" title="创建Topic"></a>创建Topic</h5><p>执行下面的命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<p>显示的log 如下</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">2020</span>-<span class="number">02</span>-<span class="number">03</span> <span class="number">16</span>:<span class="number">12</span>:<span class="number">27</span>,<span class="number">542</span>] INFO [ReplicaFetcherManager on broker <span class="number">0</span>] Removed fetcher <span class="keyword">for</span> partitions Set(test-<span class="number">0</span>) (kafka<span class="variable">.server</span><span class="variable">.ReplicaFetcherManager</span>)</span><br><span class="line">[<span class="number">2020</span>-<span class="number">02</span>-<span class="number">03</span> <span class="number">16</span>:<span class="number">12</span>:<span class="number">27</span>,<span class="number">623</span>] INFO [Log partition=test-<span class="number">0</span>, dir=/usr/<span class="keyword">local</span>/<span class="keyword">var</span>/lib/kafka-logs] Loading producer state till offset <span class="number">0</span> <span class="keyword">with</span> message format version <span class="number">2</span> (kafka<span class="variable">.log</span><span class="variable">.Log</span>)</span><br><span class="line">[<span class="number">2020</span>-<span class="number">02</span>-<span class="number">03</span> <span class="number">16</span>:<span class="number">12</span>:<span class="number">27</span>,<span class="number">628</span>] INFO [Log partition=test-<span class="number">0</span>, dir=/usr/<span class="keyword">local</span>/<span class="keyword">var</span>/lib/kafka-logs] Completed load of log <span class="keyword">with</span> <span class="number">1</span> segments, log start offset <span class="number">0</span> <span class="keyword">and</span> log <span class="keyword">end</span> offset <span class="number">0</span> in <span class="number">44</span> ms (kafka<span class="variable">.log</span><span class="variable">.Log</span>)</span><br><span class="line">[<span class="number">2020</span>-<span class="number">02</span>-<span class="number">03</span> <span class="number">16</span>:<span class="number">12</span>:<span class="number">27</span>,<span class="number">630</span>] INFO Created log <span class="keyword">for</span> partition test-<span class="number">0</span> in /usr/<span class="keyword">local</span>/<span class="keyword">var</span>/lib/kafka-logs/test-<span class="number">0</span> <span class="keyword">with</span> properties &#123;compression<span class="variable">.type</span> -&gt; producer, message<span class="variable">.downconversion</span><span class="variable">.enable</span> -&gt; true, min<span class="variable">.insync</span><span class="variable">.replicas</span> -&gt; <span class="number">1</span>, segment<span class="variable">.jitter</span><span class="variable">.ms</span> -&gt; <span class="number">0</span>, cleanup<span class="variable">.policy</span> -&gt; [delete], flush<span class="variable">.ms</span> -&gt; <span class="number">9223372036854775807</span>, segment<span class="variable">.bytes</span> -&gt; <span class="number">1073741824</span>, retention<span class="variable">.ms</span> -&gt; <span class="number">604800000</span>, flush<span class="variable">.messages</span> -&gt; <span class="number">9223372036854775807</span>, message<span class="variable">.format</span><span class="variable">.version</span> -&gt; <span class="number">2</span><span class="variable">.4</span>-IV1, file<span class="variable">.delete</span><span class="variable">.delay</span><span class="variable">.ms</span> -&gt; <span class="number">60000</span>, max<span class="variable">.compaction</span><span class="variable">.lag</span><span class="variable">.ms</span> -&gt; <span class="number">9223372036854775807</span>, max<span class="variable">.message</span><span class="variable">.bytes</span> -&gt; <span class="number">1000012</span>, min<span class="variable">.compaction</span><span class="variable">.lag</span><span class="variable">.ms</span> -&gt; <span class="number">0</span>, message<span class="variable">.timestamp</span><span class="variable">.type</span> -&gt; CreateTime, preallocate -&gt; false, min<span class="variable">.cleanable</span><span class="variable">.dirty</span><span class="variable">.ratio</span> -&gt; <span class="number">0</span><span class="variable">.5</span>, index<span class="variable">.interval</span><span class="variable">.bytes</span> -&gt; <span class="number">4096</span>, unclean<span class="variable">.leader</span><span class="variable">.election</span><span class="variable">.enable</span> -&gt; false, retention<span class="variable">.bytes</span> -&gt; -<span class="number">1</span>, delete<span class="variable">.retention</span><span class="variable">.ms</span> -&gt; <span class="number">86400000</span>, segment<span class="variable">.ms</span> -&gt; <span class="number">604800000</span>, message<span class="variable">.timestamp</span><span class="variable">.difference</span><span class="variable">.max</span><span class="variable">.ms</span> -&gt; <span class="number">9223372036854775807</span>, segment<span class="variable">.index</span><span class="variable">.bytes</span> -&gt; <span class="number">10485760</span>&#125;. (kafka<span class="variable">.log</span><span class="variable">.LogManager</span>)</span><br><span class="line">[<span class="number">2020</span>-<span class="number">02</span>-<span class="number">03</span> <span class="number">16</span>:<span class="number">12</span>:<span class="number">27</span>,<span class="number">631</span>] INFO [Partition test-<span class="number">0</span> broker=<span class="number">0</span>] No checkpointed highwatermark is found <span class="keyword">for</span> partition test-<span class="number">0</span> (kafka<span class="variable">.cluster</span><span class="variable">.Partition</span>)</span><br><span class="line">[<span class="number">2020</span>-<span class="number">02</span>-<span class="number">03</span> <span class="number">16</span>:<span class="number">12</span>:<span class="number">27</span>,<span class="number">631</span>] INFO [Partition test-<span class="number">0</span> broker=<span class="number">0</span>] Log loaded <span class="keyword">for</span> partition test-<span class="number">0</span> <span class="keyword">with</span> <span class="keyword">initial</span> high watermark <span class="number">0</span> (kafka<span class="variable">.cluster</span><span class="variable">.Partition</span>)</span><br><span class="line">[<span class="number">2020</span>-<span class="number">02</span>-<span class="number">03</span> <span class="number">16</span>:<span class="number">12</span>:<span class="number">27</span>,<span class="number">632</span>] INFO [Partition test-<span class="number">0</span> broker=<span class="number">0</span>] test-<span class="number">0</span> starts at Leader Epoch <span class="number">0</span> from offset <span class="number">0</span>. Previous Leader Epoch was: -<span class="number">1</span> (kafka<span class="variable">.cluster</span><span class="variable">.Partition</span>)</span><br></pre></td></tr></table></figure>
+<h5 id="生产者生产消息"><a href="#生产者生产消息" class="headerlink" title="生产者生产消息"></a>生产者生产消息</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kafka-console-producer --broker-list localhost:9092 --topic <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<h5 id="消费者消费消息"><a href="#消费者消费消息" class="headerlink" title="消费者消费消息"></a>消费者消费消息</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kafka-console-consumer --bootstrap-server localhost:9092 --topic <span class="built_in">test</span> --from-beginning</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -550,11 +525,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/bazel/" rel="tag"># bazel</a>
-          
-            <a href="/tags/java/" rel="tag"># java</a>
-          
-            <a href="/tags/maven/" rel="tag"># maven</a>
+            <a href="/tags/Kafka/" rel="tag"># Kafka</a>
           
         </div>
       
@@ -567,8 +538,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/12/kafka-介绍-4/" rel="next" title="kafka-介绍-4">
-                <i class="fa fa-chevron-left"></i> kafka-介绍-4
+              <a href="/2019/08/23/redis源码阅读-跳表/" rel="next" title="redis源码阅读-跳表">
+                <i class="fa fa-chevron-left"></i> redis源码阅读-跳表
               </a>
             
           </div>
@@ -576,10 +547,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/24/hexo增加评论/" rel="prev" title="hexo增加评论">
-                hexo增加评论 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -795,7 +762,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bazel使用"><span class="nav-number">2.</span> <span class="nav-text">Bazel使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置WORKSPACE"><span class="nav-number">2.1.</span> <span class="nav-text">配置WORKSPACE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编写BUILD文件"><span class="nav-number">2.2.</span> <span class="nav-text">编写BUILD文件</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建Topic"><span class="nav-number">1.</span> <span class="nav-text">创建Topic</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#生产者生产消息"><span class="nav-number">2.</span> <span class="nav-text">生产者生产消息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#消费者消费消息"><span class="nav-number">3.</span> <span class="nav-text">消费者消费消息</span></a></li></ol></div>
             
 
           </div>
